@@ -22,11 +22,14 @@ A mode for [Winamp AVS](https://www.wikiwand.com/en/Advanced_Visualization_Studi
 
   <!-- Initialize CodeMirror -->
   <script type="text/javascript">
-    var editor = document.getElementsByClassName("editor")
-
-    var cm = CodeMirror.fromTextArea(editors, {
+    var editor = document.getElementsByClassName("editor");
+    var options = {
+      lineNumbers: true,
+      matchBrackets: true,
       mode: "avs"
-    });
+    }
+
+    var cm = CodeMirror.fromTextArea(editor, options);
   </script>
 </body>
 ```
