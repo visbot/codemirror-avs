@@ -16,27 +16,135 @@
         <p>A mode for <a href="https://www.wikiwand.com/en/Advanced_Visualization_Studio">Winamp AVS</a> to use with <a href="https://codemirror.net/">CodeMirror</a>, the versatile text editor implemented in JavaScript for the browser.</p>
 
         <h2 class="h5">Example</h2>
-        <p>Let's take a look at a Dynamic Movement. Feel free to edit the code in order to test the highlighter.</p>
+        <p>Let's take a look at this Superscope from NemoOrange's <a href="https://www.youtube.com/watch?v=oNg4QxUQ2Js&list=PLE94B3AE5C75A0132&index=15">Jaxx</a> preset. Feel free to edit the code in order to test the highlighter and <a href="https://github.com/visbot/codemirror-avs-mode/issues">report an issue</a> if you come across something fishy.</p>
 
         <p><strong>Frame</strong></p>
-        <p><textarea class="codemirror">x1=x1+x1r;
-y1=y1+y1r;
-x2=x2+x2r;xm=sin(x2)/2;
-y2=y2+y2r;ym=sin(y2)/2;
-b1=b1*0.95;bm1=1/(20-b1);
-b2=b2*0.95;bm2=1/(20-b2);</textarea></p>
+        <p><textarea class="codemirror">nn=if(below(w,500),4,if(below(w,1000),6,8));
+n=ceil((w/nn))*2+4;
+m=1/(n-1);
+linesize=nn-1;
+
+yms=if(equal(ymt,dest),0,ymu);
+ymt=if(above(abs(ymt),4),-4*sign(ymt),ymt+yms);
+
+//first time only
+wh=(ww-w);
+ww=w;
+
+p=1;
+loop(if(wh,n/2,0),exec3(
+assign(p,p+2),
+assign(megabuf(p+1000),rand(35)*.01+.65),
+assign(megabuf(p+2000),(rand(20)-10)*.005)));
+
+p=1;
+loop(if(wh,n/2,0),exec3(
+assign(p,p+2),
+assign(megabuf(p+3000),rand(10)*.02),
+assign(megabuf(p+4000),rand(628)*.01)));
+
+p=1;
+loop(if(wh,n/2,0),exec3(
+assign(p,p+2),
+assign(megabuf(p+7000),rand(35)*.01+.65),
+assign(megabuf(p+8000),(rand(20)-10)*.005)));
+
+p=1;
+loop(if(wh,n/2,0),exec3(
+assign(p,p+2),
+assign(megabuf(p+9000),rand(10)*.02),
+assign(megabuf(p+10000),rand(628)*.01)));
+
+p=1;
+loop(if(wh,n/2,0),exec3(
+assign(p,p+2),
+assign(megabuf(p+13000),rand(80)*.01),
+assign(megabuf(p+14000),(rand(20)-10)*.005)));
+
+p=1;
+loop(if(wh,n/2,0),exec3(
+assign(p,p+2),
+assign(megabuf(p+15000),rand(10)*.02),
+assign(megabuf(p+16000),rand(628)*.01)));
+
+//original t value & rand getspec value
+p=1;
+loop(if(wh,n/2,0),exec3(
+assign(p,p+2),
+assign(megabuf(p+23000),rand(1000)),
+assign(megabuf(p+30000),rand(80)*.01)));
+
+//red
+p=1;
+loop(n/2,exec3(
+assign(p,p+2),
+assign(megabuf(p+5000),
+megabuf(p+5000)+megabuf(p+2000)),
+assign(megabuf(p+6000),
+megabuf(p+1000)+sin(megabuf(p+5000)
++megabuf(p+4000))*megabuf(p+3000))));
+
+
+//green
+p=1;
+loop(n/2,exec3(
+assign(p,p+2),
+assign(megabuf(p+11000),
+megabuf(p+11000)+megabuf(p+8000)),
+assign(megabuf(p+12000),
+megabuf(p+7000)+sin(megabuf(p+11000)
++megabuf(p+10000))*megabuf(p+9000))));
+
+//blue
+p=1;
+loop(n/2,exec3(
+assign(p,p+2),
+assign(megabuf(p+17000),
+megabuf(p+17000)+megabuf(p+14000)),
+assign(megabuf(p+18000),
+megabuf(p+13000)+sin(megabuf(p+17000)
++megabuf(p+16000))*megabuf(p+15000))));
+
+//vertical movement
+p=1;
+loop(n/2,exec3(
+assign(p,p+2),
+assign(megabuf(p+22000),
+megabuf(p+22000)*megabuf(p+21000)),
+assign(megabuf(p+23000),
+megabuf(p+23000)+megabuf(p+22000)+getspec(megabuf(p+30000),.1,0)*.15)));
+
+
+p=1;
+loop(n/2,exec2(
+assign(p,p+2),
+assign(megabuf(p+20000),
+sin(megabuf(p+23000))*cos(megabuf(p+23000)*.7))));</textarea></p>
 
         <p><strong>Beat</strong></p>
-        <p><textarea class="codemirror">x1r=rand(20)/100-0.1;
-x2r=rand(20)/100-0.1;
-y1r=rand(20)/100-0.1;
-y2r=rand(20)/100-0.1;
-b1=rand(15);
-b2=rand(15);</textarea></p>
+        <p><textarea class="codemirror">uu=equal(ymt,dest)*floor(rand(18)/17);
+rb=rand(5)-3;
+ru=if(uu,ru+rb,ru);
+ymu=if(uu,.02*sign(rb),ymu);
+rru=abs(ru%6);
+dest=if(uu,(rru*.5)+1.25*sign(rru-2.5)-1.25,dest);
+
+p=1;
+loop(n/2,exec3(
+assign(p,p+2),
+assign(megabuf(p+21000),(rand(15)+85)*.01),
+assign(megabuf(p+22000),(rand(20)-10)*.01)));</textarea></p>
 
         <p><strong>Pixel</strong></p>
-        <p><textarea class="codemirror">y=y-0.01+abs(sin(x*(1.25+xm)+x1))*bm1;
-x=x+sin(y*(1.25+ym)+y1)*bm2;</textarea></p>
+        <p><textarea class="codemirror">k=-k;
+x=(i*2-1+m*-k)*(1+m*3);
+yt=megabuf(i*n+20000)+megabuf(i*n+20001);
+y=k*2+yt+ymt;
+
+red=megabuf(i*n+6000);
+green=megabuf(i*n+12000);
+blue=megabuf(i*n+18000);
+drawmode=k;</textarea></p>
 
         </div>
       </div>
