@@ -17,5 +17,17 @@
   "bugs": {
     "url": "https://github.com/visbot/codemirror-avs-mode/issues"
   },
-  "homepage": "https://visbot.github.io/codemirror-avs-mode/"
+  "homepage": "https://visbot.github.io/codemirror-avs-mode/",
+  "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.19.1",
+    "gulp": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-debug": "^4.0.0",
+    "gulp-eslint": "^4.0.2",
+    "gulp-uglify": "^3.0.0"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint"
+  }
 }
