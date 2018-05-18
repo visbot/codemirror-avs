@@ -17,8 +17,8 @@
     "codemirror",
     "syntax highlighter"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "Jan T. Sott",
+  "license": "MIT",
   "private": true,
   "bugs": {
     "url": "https://github.com/visbot/codemirror-avs-mode/issues"
