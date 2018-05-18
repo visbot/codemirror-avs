@@ -1,5 +1,10 @@
 # codemirror-avs-mode
 
+[![npm](https://img.shields.io/npm/l/@visbot/codemirror-avs-mode.svg?style=flat-square)](https://www.npmjs.org/package/@visbot/codemirror-avs-mode)
+[![npm](https://img.shields.io/npm/v/@visbot/codemirror-avs-mode.svg?style=flat-square)](https://www.npmjs.org/package/@visbot/codemirror-avs-mode)
+[![Travis](https://img.shields.io/travis/visbot/codemirror-avs-mode.svg?style=flat-square)](https://travis-ci.org/visbot/codemirror-avs-mode)
+[![David](https://img.shields.io/david/dev/visbot/codemirror-avs-mode.svg?style=flat-square)](https://david-dm.org/visbot/codemirror-avs-mode?type=dev)
+
 A mode for [Winamp AVS](https://www.wikiwand.com/en/Advanced_Visualization_Studio) to use with [CodeMirror](https://codemirror.net/), the versatile text editor implemented in JavaScript for the browser.
 
 [Demo Time](https://visbot.github.io/codemirror-avs-mode//) 🙌
