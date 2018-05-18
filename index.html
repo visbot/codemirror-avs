@@ -160,16 +160,18 @@ drawmode=k;</textarea></p>
     <script src="https://cdn.jsdelivr.net/npm/codemirror@5.37.0/addon/edit/matchbrackets.min.js"></script>
     <script src="dist/avs.min.js"></script>
     <script>
-      var editors = document.getElementsByClassName('codemirror');
-      var options = {
-        lineNumbers: true,
-        matchBrackets: true,
-        mode: 'avs',
-        theme: 'bootstrap'
-      };
+      document.addEventListener("DOMContentLoaded", function() {
+        var editors = document.getElementsByClassName('codemirror');
+        var options = {
+          lineNumbers: true,
+          matchBrackets: true,
+          mode: 'avs',
+          theme: 'bootstrap'
+        };
 
-      Object.keys(editors).forEach(function(i) {
-        var cm = CodeMirror.fromTextArea(editors[i], options);
+        Object.keys(editors).forEach(function(i) {
+          var cm = CodeMirror.fromTextArea(editors[i], options);
+        });
       });
     </script>
   </body>
