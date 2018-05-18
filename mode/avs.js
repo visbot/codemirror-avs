@@ -1,5 +1,4 @@
-// CodeMirror, copyright (c) by Marijn Haverbeke and others
-// Distributed under an MIT license: http://codemirror.net/LICENSE
+/*! codemirror-avs-mode | MIT License | github.com/visbot/codemirror-avs-mode */
 
 (function(mod) {
   if (typeof exports == "object" && typeof module == "object") {
