@@ -54,3 +54,7 @@ $ git clone https://github.com/visbot/codemirror-avs
   </script>
 </body>
 ```
+
+## License
+
+All code is licensed under [The MIT License](http://opensource.org/licenses/MIT)
