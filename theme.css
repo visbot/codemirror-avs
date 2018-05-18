@@ -9,6 +9,7 @@
   font-weight: 400;
   hyphens: none;
   line-height: 1.5;
+  overflow: hidden;
   tab-size: 4;
   text-align: left;
   text-shadow: 0 1px var(--white);
