@@ -13,10 +13,10 @@ A mode for [Winamp AVS](https://www.wikiwand.com/en/Advanced_Visualization_Studi
 
 ## Installation
 
-Use your preferred [Node](https://nodejs.org) package manager to install the CLI globally
+Use your preferred [Node](https://nodejs.org) package manager to install the mode
 
 ```sh
-$ yarn global add @visbot/codemirror-avs-mode || npm install --global @visbot/codemirror-avs-mode
+$ yarn add @visbot/codemirror-avs-mode || npm install @visbot/codemirror-avs-mode
 ```
 
 ## Usage
