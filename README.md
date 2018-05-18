@@ -47,7 +47,7 @@ $ git clone https://github.com/visbot/codemirror-avs
     var options = {
       lineNumbers: true,
       matchBrackets: true,
-      mode: "avs"
+      mode: 'avs'
     };
 
     var cm = CodeMirror.fromTextArea(editor, options);
