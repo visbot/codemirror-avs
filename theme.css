@@ -56,7 +56,7 @@
   background: var(--black);
 }
 .cm-s-bootstrap .cm-keyword {
-  color: var(--cyan);
+  color: var(--green);
 }
 .cm-s-bootstrap .cm-operator {
   color: var(--blue);
@@ -74,11 +74,11 @@
   color: var(--purple);
 }
 .cm-s-bootstrap .cm-string {
-  color: var(--green);
+  color: var(--cyan);
 }
 .cm-s-bootstrap .cm-comment {
   color: var(--gray);
 }
 .cm-s-bootstrap .CodeMirror-matchingbracket {
-  color: var(--teal) !important;
+  color: var(--yellow) !important;
 }
