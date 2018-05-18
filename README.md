@@ -37,7 +37,7 @@ $ yarn add @visbot/codemirror-avs || npm install @visbot/codemirror-avs
 
   <!-- Initialize CodeMirror -->
   <script type="text/javascript">
-    var editor = document.getElementsByClassName("editor");
+    var editor = document.getElementsByClassName('editor');
     var options = {
       lineNumbers: true,
       matchBrackets: true,

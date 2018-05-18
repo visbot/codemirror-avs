@@ -154,14 +154,14 @@ drawmode=k;</textarea></p>
     <script src="https://cdn.jsdelivr.net/npm/codemirror@5.37.0/addon/edit/matchbrackets.min.js"></script>
     <script src="dist/avs.min.js"></script>
     <script>
-      var editors = document.getElementsByClassName("codemirror");
+      var editors = document.getElementsByClassName('codemirror');
 
       Object.keys(editors).forEach(function(i) {
         var cm = CodeMirror.fromTextArea(editors[i], {
           lineNumbers: true,
           matchBrackets: true,
-          mode: "avs",
-          theme: "bootstrap"
+          mode: 'avs',
+          theme: 'bootstrap'
         });
       });
     </script>
