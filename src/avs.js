@@ -1,4 +1,4 @@
-/*! codemirror-avs-mode | MIT License | github.com/visbot/codemirror-avs-mode */
+/*! codemirror-avs | MIT License | github.com/visbot/codemirror-avs */
 
 (function(mod) {
   if (typeof exports == "object" && typeof module == "object") {
