@@ -32,7 +32,7 @@ $ git clone https://github.com/visbot/codemirror-avs
 <html>
 <head>
   <!-- Import CodeMirror styles -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.37.0/lib/codemirror.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.37.0/lib/codemirror.min.css">
 </head>
 <body>
   <!-- Add Textarea -->
@@ -46,10 +46,9 @@ $ git clone https://github.com/visbot/codemirror-avs
 
   <!-- Initialize CodeMirror -->
   <script type="text/javascript">
-    var editor = document.getElementsByClassName('editor');
+    var editor = document.getElementById('editor');
     var options = {
       lineNumbers: true,
-      matchBrackets: true,
       mode: 'avs'
     };
 
