@@ -23,7 +23,7 @@
 .cm-s-bootstrap .CodeMirror-gutters {
   background: var(--gray);
   border: 0;
-  min-width: 2.4em;
+  min-width: 2em;
 }
 .cm-s-bootstrap .CodeMirror-guttermarker,
 .cm-s-bootstrap .CodeMirror-guttermarker-subtle,
