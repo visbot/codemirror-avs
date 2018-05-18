@@ -1,3 +1,11 @@
 # Package Mangers
-node_modules/
 *npm-debug.log*
+bower_components/
+node_modules/
+vendor/
+
+# Node Gyp
+build/
+
+# Project specific
+todo.md
