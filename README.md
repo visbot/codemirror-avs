@@ -8,9 +8,9 @@ A mode for [Winamp AVS](https://www.wikiwand.com/en/Advanced_Visualization_Studi
 
 ```html
 <head>
-<!-- Import CodeMirror styles -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.37.0/lib/codemirror.css">
-
+  <!-- Import CodeMirror styles -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.37.0/lib/codemirror.css">
+</head>
 <body>
   <textarea id="editor"></textarea>
 
