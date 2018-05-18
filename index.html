@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>codemirror-avs-mode</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.37.0/lib/codemirror.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.37.0/theme/ambiance.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md">
+        <h1 class="h3">codemirror-avs-mode</h1>
+        <p>A mode for <a href="https://www.wikiwand.com/en/Advanced_Visualization_Studio">Winamp AVS</a> to use with <a href="https://codemirror.net/">CodeMirror</a>, the versatile text editor implemented in JavaScript for the browser.</p>
+
+        <h2 class="h5">Example</h2>
+        <p>Let's take a look at a Dynamic Movement. Feel free to edit the code in order to test the highlighter.</p>
+
+        <strong>Frame</strong>
+        <textarea class="codemirror">frot=frot+0.05;rot=rot+brot*sin(frot);
+cz=cos(rot);sz=sin(rot);
+dx=if(equal(dx,dxb),dxb,dx+dxd);
+dy=if(equal(dy,dyb),dyb,dy+dyd);
+fx=fx+bfx;fy=fy+bfy</textarea>
+
+        <strong>Beat</strong>
+        <textarea class="codemirror">brot=rand(10)/100;
+dyb=0.2+rand(20)/10;dyd=(dyb-dy)/20;
+dxb=0.2+rand(20)/10;dxd=(dxb-dx)/20;
+bx=rand(20)/100-0.1;by=rand(20)/100-0.1;
+bfx=rand(20)/100-0.1;bz=rand(5)+3;
+bfy=rand(20)/100-0.1</textarea>
+
+        <strong>Pixel</strong>
+        <textarea class="codemirror">x1=x;y1=y;
+x2=(x1*cz-y1*sz)*dx+sin(d*3+fx);y2=(y1*cz+x1*sz)*dy+cos(d*3+fy);
+z=abs(d)-0.5;
+x=x2/(1+z);
+y=y2/(1+z);
+alpha=x2*5</textarea>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.37.0/lib/codemirror.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.37.0/addon/edit/matchbrackets.js"></script>
+    <script src="avs.js"></script>
+    <script>
+      var editors = document.getElementsByClassName("codemirror");
+
+      Object.keys(editors).forEach(function(i) {
+        var cm = CodeMirror.fromTextArea(editors[i], {
+          lineNumbers: true,
+          matchBrackets: true,
+          mode: "avs",
+          theme: "ambiance"
+        });
+
+        // Resize textarea
+        cm.setSize(null, 150);
+      });
+    </script>
+  </body>
+</html>
+
