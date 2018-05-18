@@ -19,6 +19,12 @@ Use your preferred [Node](https://nodejs.org) package manager to install the mod
 $ yarn add @visbot/codemirror-avs || npm install @visbot/codemirror-avs
 ```
 
+Alternatively, you can clone this repository
+
+```sh
+$ git clone https://github.com/visbot/codemirror-avs
+```
+
 ## Usage
 
 ```html
