@@ -22,6 +22,7 @@
     this.align = align;
     this.prev = prev;
   }
+
   function pushContext(state, col, type, info) {
     var indent = state.indented;
     if (
@@ -39,6 +40,7 @@
       state.context
     ));
   }
+
   function popContext(state) {
     var t = state.context.type;
     if (t == ")" || t == "]" || t == "}")
@@ -77,15 +79,11 @@
     var indentStatements = parserConfig.indentStatements !== false;
     var indentSwitch = parserConfig.indentSwitch !== false;
     var namespaceSeparator = parserConfig.namespaceSeparator;
-    var isPunctuationChar =
-      parserConfig.isPunctuationChar || /[\[\]{}\(\),;\:\.]/;
+    var isPunctuationChar = parserConfig.isPunctuationChar || /[\[\]{}\(\),;\:\.]/;
     var numberStart = parserConfig.numberStart || /[\d\.]/;
-    var number =
-      parserConfig.number ||
-      /^(?:0x[a-f\d]+|0b[01]+|(?:\d+\.?\d*|\.\d+)(?:e[-+]?\d+)?)(u|ll?|l|f)?/i;
+    var number = parserConfig.number || /^(?:0x[a-f\d]+|0b[01]+|(?:\d+\.?\d*|\.\d+)(?:e[-+]?\d+)?)(u|ll?|l|f)?/i;
     var isOperatorChar = parserConfig.isOperatorChar || /[+\-*&%=<>!?|\/]/;
-    var isIdentifierChar =
-      parserConfig.isIdentifierChar || /[\w\$_\xa1-\uffff]/;
+    var isIdentifierChar = parserConfig.isIdentifierChar || /[\w\$_\xa1-\uffff]/;
 
     var curPunc;
     var isDefKeyword;
@@ -332,6 +330,7 @@
     for (var i = 0; i < words.length; ++i) obj[words[i]] = true;
     return obj;
   }
+
   function contains(words, word) {
     if (typeof words === "function") {
       return words(word);
@@ -339,6 +338,7 @@
       return words.propertyIsEnumerable(word);
     }
   }
+
   function def(mimes, mode) {
     if (typeof mimes == "string") mimes = [mimes];
     var words = [];
