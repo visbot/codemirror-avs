@@ -74,6 +74,7 @@
     var defKeywords = parserConfig.defKeywords || {};
     var types = parserConfig.types || {};
     var constants = parserConfig.constants || {};
+    var variables = parserConfig.variables || {};
     var hooks = parserConfig.hooks || {};
     var multiLineStrings = parserConfig.multiLineStrings;
     var indentStatements = parserConfig.indentStatements !== false;
@@ -152,9 +153,10 @@
         return "builtin";
       }
 
+      if (contains(variables, cur)) return "variable";
       if (contains(constants, cur)) return "variable-2";
 
-      return "variable";
+      return "keyword";
     }
 
     function tokenString(quote) {
@@ -346,7 +348,7 @@
       if (obj)
         for (var prop in obj) if (obj.hasOwnProperty(prop)) words.push(prop);
     }
-    add(mode.keywords);
+    add(mode.variables);
     add(mode.builtin);
     add(mode.constants);
     if (words.length) {
@@ -360,8 +362,8 @@
 
   def(["text/x-avs", "avs"], {
     name: "avs",
-    keywords: words(
-      "n x y i v b red green blue linesize skip drawmode w h d t"
+    variables: words(
+      "n x y z i v b red green blue linesize skip drawmode w h d t"
     ),
     builtin: words(
       "abs sin cos tan asin acos atan atan2 sqr sqrt invsqrt pow exp log log10 floor ceil sign min max sigmoid rand band bor bnot if assign exec2 equal above below getosc getspec gettime getkbmouse megabuf gmegabuf loop"
