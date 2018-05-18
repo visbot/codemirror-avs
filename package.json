@@ -19,7 +19,6 @@
   ],
   "author": "Jan T. Sott",
   "license": "MIT",
-  "private": true,
   "bugs": {
     "url": "https://github.com/visbot/codemirror-avs/issues"
   },
