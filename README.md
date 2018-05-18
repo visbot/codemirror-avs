@@ -18,7 +18,7 @@ A mode for [Winamp AVS](https://www.wikiwand.com/en/Advanced_Visualization_Studi
   <script src="https://cdn.jsdelivr.net/npm/codemirror@5.37.0/lib/codemirror.min.js"></script>
 
   <!-- Import AVS mode -->
-  <script src="mode/avs.js"></script>
+  <script src="dist/avs.min.js"></script>
 
   <!-- Initialize CodeMirror -->
   <script type="text/javascript">
