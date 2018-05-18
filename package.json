@@ -11,7 +11,12 @@
     "type": "git",
     "url": "git+https://github.com/visbot/codemirror-avs-mode.git"
   },
-  "keywords": [],
+  "keywords": [
+    "avs",
+    "winamp avs",
+    "codemirror",
+    "syntax highlighter"
+  ],
   "author": "",
   "license": "ISC",
   "private": true,
