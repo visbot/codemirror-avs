@@ -6,7 +6,7 @@
   <title>codemirror-avs-mode</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.37.0/lib/codemirror.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.37.0/theme/ambiance.css">
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
   <div class="container">
@@ -18,28 +18,25 @@
         <h2 class="h5">Example</h2>
         <p>Let's take a look at a Dynamic Movement. Feel free to edit the code in order to test the highlighter.</p>
 
-        <strong>Frame</strong>
-        <textarea class="codemirror">frot=frot+0.05;rot=rot+brot*sin(frot);
-cz=cos(rot);sz=sin(rot);
-dx=if(equal(dx,dxb),dxb,dx+dxd);
-dy=if(equal(dy,dyb),dyb,dy+dyd);
-fx=fx+bfx;fy=fy+bfy</textarea>
+        <p><strong>Frame</strong></p>
+        <p><textarea class="codemirror">x1=x1+x1r;
+y1=y1+y1r;
+x2=x2+x2r;xm=sin(x2)/2;
+y2=y2+y2r;ym=sin(y2)/2;
+b1=b1*0.95;bm1=1/(20-b1);
+b2=b2*0.95;bm2=1/(20-b2);</textarea></p>
 
-        <strong>Beat</strong>
-        <textarea class="codemirror">brot=rand(10)/100;
-dyb=0.2+rand(20)/10;dyd=(dyb-dy)/20;
-dxb=0.2+rand(20)/10;dxd=(dxb-dx)/20;
-bx=rand(20)/100-0.1;by=rand(20)/100-0.1;
-bfx=rand(20)/100-0.1;bz=rand(5)+3;
-bfy=rand(20)/100-0.1</textarea>
+        <p><strong>Beat</strong></p>
+        <p><textarea class="codemirror">x1r=rand(20)/100-0.1;
+x2r=rand(20)/100-0.1;
+y1r=rand(20)/100-0.1;
+y2r=rand(20)/100-0.1;
+b1=rand(15);
+b2=rand(15);</textarea></p>
 
-        <strong>Pixel</strong>
-        <textarea class="codemirror">x1=x;y1=y;
-x2=(x1*cz-y1*sz)*dx+sin(d*3+fx);y2=(y1*cz+x1*sz)*dy+cos(d*3+fy);
-z=abs(d)-0.5;
-x=x2/(1+z);
-y=y2/(1+z);
-alpha=x2*5</textarea>
+        <p><strong>Pixel</strong></p>
+        <p><textarea class="codemirror">y=y-0.01+abs(sin(x*(1.25+xm)+x1))*bm1;
+x=x+sin(y*(1.25+ym)+y1)*bm2;</textarea></p>
 
         </div>
       </div>
@@ -56,11 +53,8 @@ alpha=x2*5</textarea>
           lineNumbers: true,
           matchBrackets: true,
           mode: "avs",
-          theme: "ambiance"
+          theme: "bootstrap"
         });
-
-        // Resize textarea
-        cm.setSize(null, 150);
       });
     </script>
   </body>
