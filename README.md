@@ -5,9 +5,19 @@
 [![Travis](https://img.shields.io/travis/visbot/codemirror-avs-mode.svg?style=flat-square)](https://travis-ci.org/visbot/codemirror-avs-mode)
 [![David](https://img.shields.io/david/dev/visbot/codemirror-avs-mode.svg?style=flat-square)](https://david-dm.org/visbot/codemirror-avs-mode?type=dev)
 
+## Description
+
 A mode for [Winamp AVS](https://www.wikiwand.com/en/Advanced_Visualization_Studio) to use with [CodeMirror](https://codemirror.net/), the versatile text editor implemented in JavaScript for the browser.
 
 [Demo Time](https://visbot.github.io/codemirror-avs-mode//) 🙌
+
+## Installation
+
+Use your preferred [Node](https://nodejs.org) package manager to install the CLI globally
+
+```sh
+$ yarn global add @visbot/codemirror-avs-mode || npm install --global @visbot/codemirror-avs-mode
+```
 
 ## Usage
 
