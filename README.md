@@ -28,11 +28,14 @@ $ git clone https://github.com/visbot/codemirror-avs
 ## Usage
 
 ```html
+<!DOCTYPE html>
+<html>
 <head>
   <!-- Import CodeMirror styles -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.37.0/lib/codemirror.css">
 </head>
 <body>
+  <!-- Add Textarea -->
   <textarea id="editor"></textarea>
 
   <!-- Import CodeMirror library -->
@@ -53,6 +56,7 @@ $ git clone https://github.com/visbot/codemirror-avs
     var cm = CodeMirror.fromTextArea(editor, options);
   </script>
 </body>
+</html>
 ```
 
 ## License
