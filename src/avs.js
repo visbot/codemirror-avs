@@ -363,7 +363,7 @@
   def(["text/x-avs", "avs"], {
     name: "avs",
     variables: words(
-      "n x y i v b red green blue linesize skip drawmode w h d t"
+      "n x y i v b red green blue linesize skip drawmode w h d"
     ),
     builtin: words(
       "abs sin cos tan asin acos atan atan2 sqr sqrt invsqrt pow exp log log10 floor ceil sign min max sigmoid rand band bor bnot if assign exec2 equal above below getosc getspec gettime getkbmouse megabuf gmegabuf loop"
