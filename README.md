@@ -27,7 +27,7 @@ A mode for [Winamp AVS](https://www.wikiwand.com/en/Advanced_Visualization_Studi
       lineNumbers: true,
       matchBrackets: true,
       mode: "avs"
-    }
+    };
 
     var cm = CodeMirror.fromTextArea(editor, options);
   </script>
