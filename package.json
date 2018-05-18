@@ -1,5 +1,5 @@
 {
-  "name": "@visot/codemirror-avs-mode",
+  "name": "@visot/codemirror-avs",
   "version": "0.0.0",
   "description": "A mode for Winamp AVS to use with CodeMirror, the versatile text editor implemented in JavaScript for the browser.",
   "main": "dist/avs.min.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/visbot/codemirror-avs-mode.git"
+    "url": "git+https://github.com/visbot/codemirror-avs.git"
   },
   "keywords": [
     "avs",
@@ -21,9 +21,9 @@
   "license": "MIT",
   "private": true,
   "bugs": {
-    "url": "https://github.com/visbot/codemirror-avs-mode/issues"
+    "url": "https://github.com/visbot/codemirror-avs/issues"
   },
-  "homepage": "https://visbot.github.io/codemirror-avs-mode/",
+  "homepage": "https://visbot.github.io/codemirror-avs/",
   "devDependencies": {
     "babel-eslint": "^8.2.3",
     "eslint": "^4.19.1",

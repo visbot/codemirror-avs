@@ -1,22 +1,22 @@
-# codemirror-avs-mode
+# codemirror-avs
 
-[![npm](https://img.shields.io/npm/l/@visbot/codemirror-avs-mode.svg?style=flat-square)](https://www.npmjs.org/package/@visbot/codemirror-avs-mode)
-[![npm](https://img.shields.io/npm/v/@visbot/codemirror-avs-mode.svg?style=flat-square)](https://www.npmjs.org/package/@visbot/codemirror-avs-mode)
-[![Travis](https://img.shields.io/travis/visbot/codemirror-avs-mode.svg?style=flat-square)](https://travis-ci.org/visbot/codemirror-avs-mode)
-[![David](https://img.shields.io/david/dev/visbot/codemirror-avs-mode.svg?style=flat-square)](https://david-dm.org/visbot/codemirror-avs-mode?type=dev)
+[![npm](https://img.shields.io/npm/l/@visbot/codemirror-avs.svg?style=flat-square)](https://www.npmjs.org/package/@visbot/codemirror-avs)
+[![npm](https://img.shields.io/npm/v/@visbot/codemirror-avs.svg?style=flat-square)](https://www.npmjs.org/package/@visbot/codemirror-avs)
+[![Travis](https://img.shields.io/travis/visbot/codemirror-avs.svg?style=flat-square)](https://travis-ci.org/visbot/codemirror-avs)
+[![David](https://img.shields.io/david/dev/visbot/codemirror-avs.svg?style=flat-square)](https://david-dm.org/visbot/codemirror-avs?type=dev)
 
 ## Description
 
 A mode for [Winamp AVS](https://www.wikiwand.com/en/Advanced_Visualization_Studio) to use with [CodeMirror](https://codemirror.net/), the versatile text editor implemented in JavaScript for the browser.
 
-[Demo Time](https://visbot.github.io/codemirror-avs-mode//) 🙌
+[Demo Time](https://visbot.github.io/codemirror-avs//) 🙌
 
 ## Installation
 
 Use your preferred [Node](https://nodejs.org) package manager to install the mode
 
 ```sh
-$ yarn add @visbot/codemirror-avs-mode || npm install @visbot/codemirror-avs-mode
+$ yarn add @visbot/codemirror-avs || npm install @visbot/codemirror-avs
 ```
 
 ## Usage
