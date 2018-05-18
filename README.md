@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/l/@visbot/codemirror-avs.svg?style=flat-square)](https://www.npmjs.org/package/@visbot/codemirror-avs)
 [![npm](https://img.shields.io/npm/v/@visbot/codemirror-avs.svg?style=flat-square)](https://www.npmjs.org/package/@visbot/codemirror-avs)
-[![Travis](https://img.shields.io/travis/visbot/codemirror-avs.svg?style=flat-square)](https://travis-ci.org/visbot/codemirror-avs)
+[![CircleCI](https://img.shields.io/circleci/project/visbot/codemirror-avs.svg?style=flat-square)](https://circleci.com/gh/visbot/codemirror-avs)
 [![David](https://img.shields.io/david/dev/visbot/codemirror-avs.svg?style=flat-square)](https://david-dm.org/visbot/codemirror-avs?type=dev)
 
 ## Description
