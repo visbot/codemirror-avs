@@ -1,3 +1,5 @@
+@import 'https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css';
+
 .cm-s-bootstrap.CodeMirror {
   background: var(--light);
   border-radius: 2px;
