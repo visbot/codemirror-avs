@@ -34,14 +34,15 @@ Example usage on website
 <html>
 <head>
   <!-- Import CodeMirror styles -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.37.0/lib/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5/lib/codemirror.min.css">
+<head>
 </head>
 <body>
   <!-- Add Textarea -->
   <textarea id="editor"></textarea>
 
   <!-- Import CodeMirror library -->
-  <script src="https://cdn.jsdelivr.net/npm/codemirror@5.37.0/lib/codemirror.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/codemirror@5/lib/codemirror.min.js"></script>
 
   <!-- Import AVS mode -->
   <script src="dist/avs.min.js"></script>
