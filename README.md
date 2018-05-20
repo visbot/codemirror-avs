@@ -27,6 +27,8 @@ $ git clone https://github.com/visbot/codemirror-avs
 
 ## Usage
 
+Example usage on website
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -57,6 +59,23 @@ $ git clone https://github.com/visbot/codemirror-avs
 </body>
 </html>
 ```
+
+### Modes
+
+Beside the loose `avs` mode, you can specify stricter modes for specific components:
+
+Mode                            | Effect
+--------------------------------|-------
+`avs/bump`                      | Trans/Bump
+`avs/color-modifier`            | Trans/Color Modifier
+`avs/dynamic-distance-modifier` | Trans/Dynamic Distance Modifier
+`avs/dynamic-movement`          | Trans/Dynamic Movement
+`avs/dynamic-shift`             | Trans/Dynamic Shift
+`avs/effect-list`               | Effect List
+`avs/movement`                  | Trans/Movement
+`avs/superscope`                | Render/SuperScope
+`avs/texer2`                    | Render/Texer II
+`avs/Triangle`                  | Render/Triangle
 
 ## License
 
