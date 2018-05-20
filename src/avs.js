@@ -1,18 +1,18 @@
 /*! codemirror-avs | MIT License | github.com/visbot/codemirror-avs */
 
 (function(mod) {
-  if (typeof exports == "object" && typeof module == "object") {
+  if (typeof exports == 'object' && typeof module == 'object') {
     // CommonJS
-    mod(require("codemirror"));
-  } else if (typeof define == "function" && define.amd) {
+    mod(require('codemirror'));
+  } else if (typeof define == 'function' && define.amd) {
     // AMD
-    define(["codemirror"], mod);
+    define(['codemirror'], mod);
   } else {
     // Plain browser env
     mod(CodeMirror);
   }
 })(function(CodeMirror) {
-  "use strict";
+  'use strict';
 
   function Context(indented, column, type, info, align, prev) {
     this.indented = indented;
@@ -27,8 +27,8 @@
     var indent = state.indented;
     if (
       state.context &&
-      state.context.type == "statement" &&
-      type != "statement"
+      state.context.type == 'statement' &&
+      type != 'statement'
     )
       indent = state.context.indented;
     return (state.context = new Context(
@@ -43,13 +43,13 @@
 
   function popContext(state) {
     var t = state.context.type;
-    if (t == ")" || t == "]" || t == "}")
+    if (t == ')' || t == ']' || t == '}')
       state.indented = state.context.indented;
     return (state.context = state.context.prev);
   }
 
   function typeBefore(stream, state, pos) {
-    if (state.prevToken == "variable" || state.prevToken == "type") return true;
+    if (state.prevToken == 'variable' || state.prevToken == 'type') return true;
     if (/\S(?:[^- ]>|[*\]])\s*$|\*$/.test(stream.string.slice(0, pos)))
       return true;
     if (state.typeAtEndOfLine && stream.column() == stream.indentation())
@@ -58,13 +58,13 @@
 
   function isTopScope(context) {
     for (;;) {
-      if (!context || context.type == "top") return true;
-      if (context.type == "}" && context.prev.info != "namespace") return false;
+      if (!context || context.type == 'top') return true;
+      if (context.type == '}' && context.prev.info != 'namespace') return false;
       context = context.prev;
     }
   }
 
-  CodeMirror.defineMode("avs", function(config, parserConfig) {
+  CodeMirror.defineMode('avs', function(config, parserConfig) {
     var indentUnit = config.indentUnit;
     var statementIndentUnit = parserConfig.statementIndentUnit || indentUnit;
     var dontAlignCalls = parserConfig.dontAlignCalls;
@@ -109,18 +109,18 @@
 
       if (numberStart.test(ch)) {
         stream.backUp(1);
-        if (stream.match(number)) return "number";
+        if (stream.match(number)) return 'number';
         stream.next();
       }
 
-      if (ch == "/") {
-        if (stream.eat("*")) {
+      if (ch == '/') {
+        if (stream.eat('*')) {
           state.tokenize = tokenComment;
           return tokenComment(stream, state);
         }
-        if (stream.eat("/")) {
+        if (stream.eat('/')) {
           stream.skipToEnd();
-          return "comment";
+          return 'comment';
         }
       }
 
@@ -129,7 +129,7 @@
           !stream.match(/^\/[\/*]/, false) &&
           stream.eat(isOperatorChar)
         ) {}
-        return "operator";
+        return 'operator';
       }
 
       stream.eatWhile(isIdentifierChar);
@@ -141,22 +141,22 @@
       var cur = stream.current();
 
       if (contains(keywords, cur)) {
-        if (contains(blockKeywords, cur)) curPunc = "newstatement";
+        if (contains(blockKeywords, cur)) curPunc = 'newstatement';
         if (contains(defKeywords, cur)) isDefKeyword = true;
-        return "keyword";
+        return 'keyword';
       }
 
-      if (contains(types, cur)) return "type";
+      if (contains(types, cur)) return 'type';
 
       if (contains(builtin, cur)) {
-        if (contains(blockKeywords, cur)) curPunc = "newstatement";
-        return "builtin";
+        if (contains(blockKeywords, cur)) curPunc = 'newstatement';
+        return 'builtin';
       }
 
-      if (contains(variables, cur)) return "variable";
-      if (contains(constants, cur)) return "variable-2";
+      if (contains(variables, cur)) return 'variable';
+      if (contains(constants, cur)) return 'variable-2';
 
-      return "keyword";
+      return 'keyword';
     }
 
     function tokenString(quote) {
@@ -169,10 +169,10 @@
             end = true;
             break;
           }
-          escaped = !escaped && next == "\\";
+          escaped = !escaped && next == '\\';
         }
         if (end || !(escaped || multiLineStrings)) state.tokenize = null;
-        return "string";
+        return 'string';
       };
     }
 
@@ -180,13 +180,13 @@
       var maybeEnd = false,
         ch;
       while ((ch = stream.next())) {
-        if (ch == "/" && maybeEnd) {
+        if (ch == '/' && maybeEnd) {
           state.tokenize = null;
           break;
         }
-        maybeEnd = ch == "*";
+        maybeEnd = ch == '*';
       }
-      return "comment";
+      return 'comment';
     }
 
     function maybeEOL(stream, state) {
@@ -207,7 +207,7 @@
           context: new Context(
             (basecolumn || 0) - indentUnit,
             0,
-            "top",
+            'top',
             null,
             false
           ),
@@ -230,51 +230,51 @@
         }
         curPunc = isDefKeyword = null;
         var style = (state.tokenize || tokenBase)(stream, state);
-        if (style == "comment" || style == "meta") return style;
+        if (style == 'comment' || style == 'meta') return style;
         if (ctx.align == null) ctx.align = true;
 
         if (
-          curPunc == ";" ||
-          curPunc == ":" ||
-          (curPunc == "," && stream.match(/^\s*(?:\/\/.*)?$/, false))
+          curPunc == ';' ||
+          curPunc == ':' ||
+          (curPunc == ',' && stream.match(/^\s*(?:\/\/.*)?$/, false))
         )
-          while (state.context.type == "statement") popContext(state);
-        else if (curPunc == "{") pushContext(state, stream.column(), "}");
-        else if (curPunc == "[") pushContext(state, stream.column(), "]");
-        else if (curPunc == "(") pushContext(state, stream.column(), ")");
-        else if (curPunc == "}") {
-          while (ctx.type == "statement") ctx = popContext(state);
-          if (ctx.type == "}") ctx = popContext(state);
-          while (ctx.type == "statement") ctx = popContext(state);
+          while (state.context.type == 'statement') popContext(state);
+        else if (curPunc == '{') pushContext(state, stream.column(), '}');
+        else if (curPunc == '[') pushContext(state, stream.column(), ']');
+        else if (curPunc == '(') pushContext(state, stream.column(), ')');
+        else if (curPunc == '}') {
+          while (ctx.type == 'statement') ctx = popContext(state);
+          if (ctx.type == '}') ctx = popContext(state);
+          while (ctx.type == 'statement') ctx = popContext(state);
         } else if (curPunc == ctx.type) popContext(state);
         else if (
           indentStatements &&
-          (((ctx.type == "}" || ctx.type == "top") && curPunc != ";") ||
-            (ctx.type == "statement" && curPunc == "newstatement"))
+          (((ctx.type == '}' || ctx.type == 'top') && curPunc != ';') ||
+            (ctx.type == 'statement' && curPunc == 'newstatement'))
         ) {
-          pushContext(state, stream.column(), "statement", stream.current());
+          pushContext(state, stream.column(), 'statement', stream.current());
         }
 
         if (
-          style == "variable" &&
-          (state.prevToken == "def" ||
+          style == 'variable' &&
+          (state.prevToken == 'def' ||
             (parserConfig.typeFirstDefinitions &&
               typeBefore(stream, state, stream.start) &&
               isTopScope(state.context) &&
               stream.match(/^\s*\(/, false)))
         )
-          style = "def";
+          style = 'def';
 
         if (hooks.token) {
           var result = hooks.token(stream, state, style);
           if (result !== undefined) style = result;
         }
 
-        if (style == "def" && parserConfig.styleDefs === false)
-          style = "variable";
+        if (style == 'def' && parserConfig.styleDefs === false)
+          style = 'variable';
 
         state.startOfLine = false;
-        state.prevToken = isDefKeyword ? "def" : style || curPunc;
+        state.prevToken = isDefKeyword ? 'def' : style || curPunc;
         maybeEOL(stream, state);
         return style;
       },
@@ -287,28 +287,28 @@
           return CodeMirror.Pass;
         var ctx = state.context,
           firstChar = textAfter && textAfter.charAt(0);
-        if (ctx.type == "statement" && firstChar == "}") ctx = ctx.prev;
+        if (ctx.type == 'statement' && firstChar == '}') ctx = ctx.prev;
         if (parserConfig.dontIndentStatements)
           while (
-            ctx.type == "statement" &&
+            ctx.type == 'statement' &&
             parserConfig.dontIndentStatements.test(ctx.info)
           )
             ctx = ctx.prev;
         if (hooks.indent) {
           var hook = hooks.indent(state, ctx, textAfter);
-          if (typeof hook == "number") return hook;
+          if (typeof hook == 'number') return hook;
         }
         var closing = firstChar == ctx.type;
-        var switchBlock = ctx.prev && ctx.prev.info == "switch";
+        var switchBlock = ctx.prev && ctx.prev.info == 'switch';
         if (parserConfig.allmanIndentation && /[{(]/.test(firstChar)) {
-          while (ctx.type != "top" && ctx.type != "}") ctx = ctx.prev;
+          while (ctx.type != 'top' && ctx.type != '}') ctx = ctx.prev;
           return ctx.indented;
         }
-        if (ctx.type == "statement")
-          return ctx.indented + (firstChar == "{" ? 0 : statementIndentUnit);
-        if (ctx.align && (!dontAlignCalls || ctx.type != ")"))
+        if (ctx.type == 'statement')
+          return ctx.indented + (firstChar == '{' ? 0 : statementIndentUnit);
+        if (ctx.align && (!dontAlignCalls || ctx.type != ')'))
           return ctx.column + (closing ? 0 : 1);
-        if (ctx.type == ")" && !closing)
+        if (ctx.type == ')' && !closing)
           return ctx.indented + statementIndentUnit;
 
         return (
@@ -319,22 +319,22 @@
             : 0)
         );
       },
-      blockCommentStart: "/*",
-      blockCommentEnd: "*/",
-      blockCommentContinue: " * ",
-      lineComment: "//"
+      blockCommentStart: '/*',
+      blockCommentEnd: '*/',
+      blockCommentContinue: ' * ',
+      lineComment: '//'
     };
   });
 
   function words(str) {
     var obj = {},
-      words = str.split(" ");
+      words = str.split(' ');
     for (var i = 0; i < words.length; ++i) obj[words[i]] = true;
     return obj;
   }
 
   function contains(words, word) {
-    if (typeof words === "function") {
+    if (typeof words === 'function') {
       return words(word);
     } else {
       return words.propertyIsEnumerable(word);
@@ -342,7 +342,7 @@
   }
 
   function def(mimes, mode) {
-    if (typeof mimes == "string") mimes = [mimes];
+    if (typeof mimes == 'string') mimes = [mimes];
     var words = [];
     function add(obj) {
       if (obj)
@@ -353,22 +353,128 @@
     add(mode.constants);
     if (words.length) {
       mode.helperType = mimes[0];
-      CodeMirror.registerHelper("hintWords", mimes[0], words);
+      CodeMirror.registerHelper('hintWords', mimes[0], words);
     }
 
     for (var i = 0; i < mimes.length; ++i)
       CodeMirror.defineMIME(mimes[i], mode);
   }
 
-  def(["text/x-avs", "avs"], {
-    name: "avs",
+  var builtin = words(
+    'abs sin cos tan asin acos atan atan2 sqr sqrt invsqrt pow exp log log10 floor ceil sign min max sigmoid rand band bor bnot if assign exec2 equal above below getosc getspec gettime getkbmouse megabuf gmegabuf loop'
+  );
+  var constants = words(
+    '$e $phi $pi $E $PHI $PI'
+  );
+  var indentSwitch = false;
+
+  def(['text/x-avs-bump', 'avs/bump'], {
+    name: 'avs',
     variables: words(
-      "n x y i v b red green blue linesize skip drawmode w h d"
+      'x y isBeat isLBeat bi'
     ),
-    builtin: words(
-      "abs sin cos tan asin acos atan atan2 sqr sqrt invsqrt pow exp log log10 floor ceil sign min max sigmoid rand band bor bnot if assign exec2 equal above below getosc getspec gettime getkbmouse megabuf gmegabuf loop"
+    builtin: builtin,
+    constants: constants,
+    indentSwitch: indentSwitch
+  });
+
+  def(['text/x-avs-color-modifier', 'avs/color-modifier', 'avs/cm'], {
+    name: 'avs',
+    variables: words(
+      'red green blue'
     ),
-    constants: words("$e $phi $pi $E $PHI $PI"),
-    indentSwitch: false
+    builtin: builtin,
+    constants: constants,
+    indentSwitch: indentSwitch
+  });
+
+  def(['text/x-avs-dynamic-distance-modifier', 'avs/dynamic-distance-modifier', 'avs/ddm'], {
+    name: 'avs',
+    variables: words(
+      'd'
+    ),
+    builtin: builtin,
+    constants: constants,
+    indentSwitch: indentSwitch
+  });
+
+  def(['text/x-avs-dynamic-movement', 'avs/dynamic-movement', 'avs/dm'], {
+    name: 'avs',
+    variables: words(
+      'x y w h r d alpha'
+    ),
+    builtin: builtin,
+    constants: constants,
+    indentSwitch: indentSwitch
+  });
+
+  def(['text/x-avs-dynamic-shift', 'avs/dynamic-shift', 'avs/ds'], {
+    name: 'avs',
+    variables: words(
+      'x y w h b alpha'
+    ),
+    builtin: builtin,
+    constants: constants,
+    indentSwitch: indentSwitch
+  });
+
+  def(['text/x-avs-effect-list', 'avs/effect-list', 'avs/el'], {
+    name: 'avs',
+    variables: words(
+      'enabled beat clear alphain alphaout w h'
+    ),
+    builtin: builtin,
+    constants: constants,
+    indentSwitch: indentSwitch
+  });
+
+  def(['text/x-avs-movement', 'avs/movement', 'avs/mov'], {
+    name: 'avs',
+    variables: words(
+      'r d x y sw sh'
+    ),
+    builtin: builtin,
+    constants: constants,
+    indentSwitch: indentSwitch
+  });
+
+  def(['text/x-avs-superscope', 'avs/superscope', 'avs/ssc'], {
+    name: 'avs',
+    variables: words(
+      'n x y i v b red green blue linesize skip drawmode w h'
+    ),
+    builtin: builtin,
+    constants: constants,
+    indentSwitch: indentSwitch
+  });
+
+  def(['text/x-avs-texer2', 'avs/texer2', 'avs/t2'], {
+    name: 'avs',
+    variables: words(
+      'n w h i x y v b iw ih sizex sizey red green blue skip'
+    ),
+    builtin: builtin,
+    constants: constants,
+    indentSwitch: indentSwitch
+  });
+
+  def(['text/x-avs-triangle', 'avs/triangle', 'avs/tr'], {
+    name: 'avs',
+    variables: words(
+      'n x1 x2 x3 y1 y2 y3 z1 skip red1 blue1 green1 w h zbclear zbuf'
+    ),
+    builtin: builtin,
+    constants: constants,
+    indentSwitch: indentSwitch
+  });
+
+  def(['text/x-avs', 'avs'], {
+    name: 'avs',
+    variables: words(
+      'alpha alphain alphaout b beat bi blue blue1 clear d drawmode enabled green green1 h i ih isBeat isLBeat iw linesize n r red red1 sh sizex sizey skip sw v w x x1 x2 x3 y y1 y2 y3 z1 zbclear zbuf'
+    ),
+    builtin: builtin,
+    constants: constants,
+    indentSwitch: indentSwitch
   });
 });
