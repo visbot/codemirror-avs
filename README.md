@@ -76,7 +76,7 @@ Mode                            | Effect
 `avs/movement`                  | Trans/Movement
 `avs/superscope`                | Render/SuperScope
 `avs/texer2`                    | Render/Texer II
-`avs/Triangle`                  | Render/Triangle
+`avs/triangle`                  | Render/Triangle
 
 ## License
 
