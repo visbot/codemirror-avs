@@ -368,7 +368,7 @@
     builtin: words(
       "abs sin cos tan asin acos atan atan2 sqr sqrt invsqrt pow exp log log10 floor ceil sign min max sigmoid rand band bor bnot if assign exec2 equal above below getosc getspec gettime getkbmouse megabuf gmegabuf loop"
     ),
-    constants: words("$e $ph $pi $E $PH $PI"),
+    constants: words("$e $phi $pi $E $PHI $PI"),
     indentSwitch: false
   });
 });
