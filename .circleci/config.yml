@@ -18,3 +18,7 @@ jobs:
       - run:
           name: Running Tests
           command: npm test
+experimental:
+  notify:
+    webhooks:
+      - url: https://webhooks.gitter.im/e/fb7b34e0c753222280f7
