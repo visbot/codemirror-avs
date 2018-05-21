@@ -368,7 +368,7 @@
   );
   var indentSwitch = false;
 
-  def(['text/x-avs-bump', 'avs/bump'], {
+  def(['avs/bump'], {
     name: 'avs',
     variables: words(
       'x y isBeat isLBeat bi'
@@ -378,7 +378,7 @@
     indentSwitch: indentSwitch
   });
 
-  def(['text/x-avs-color-modifier', 'avs/color-modifier', 'avs/cm'], {
+  def(['avs/color-modifier', 'avs/cm'], {
     name: 'avs',
     variables: words(
       'red green blue'
@@ -388,7 +388,7 @@
     indentSwitch: indentSwitch
   });
 
-  def(['text/x-avs-dynamic-distance-modifier', 'avs/dynamic-distance-modifier', 'avs/ddm'], {
+  def(['avs/dynamic-distance-modifier', 'avs/ddm'], {
     name: 'avs',
     variables: words(
       'd'
@@ -398,7 +398,7 @@
     indentSwitch: indentSwitch
   });
 
-  def(['text/x-avs-dynamic-movement', 'avs/dynamic-movement', 'avs/dm'], {
+  def(['avs/dynamic-movement', 'avs/dm'], {
     name: 'avs',
     variables: words(
       'x y w h r d alpha'
@@ -408,7 +408,7 @@
     indentSwitch: indentSwitch
   });
 
-  def(['text/x-avs-dynamic-shift', 'avs/dynamic-shift', 'avs/ds'], {
+  def(['avs/dynamic-shift', 'avs/ds'], {
     name: 'avs',
     variables: words(
       'x y w h b alpha'
@@ -418,7 +418,7 @@
     indentSwitch: indentSwitch
   });
 
-  def(['text/x-avs-effect-list', 'avs/effect-list', 'avs/el'], {
+  def(['avs/effect-list', 'avs/el'], {
     name: 'avs',
     variables: words(
       'enabled beat clear alphain alphaout w h'
@@ -428,7 +428,7 @@
     indentSwitch: indentSwitch
   });
 
-  def(['text/x-avs-movement', 'avs/movement', 'avs/mov'], {
+  def(['avs/movement', 'avs/mov'], {
     name: 'avs',
     variables: words(
       'r d x y sw sh'
@@ -438,7 +438,7 @@
     indentSwitch: indentSwitch
   });
 
-  def(['text/x-avs-superscope', 'avs/superscope', 'avs/ssc'], {
+  def(['avs/superscope', 'avs/ssc'], {
     name: 'avs',
     variables: words(
       'n x y i v b red green blue linesize skip drawmode w h'
@@ -448,7 +448,7 @@
     indentSwitch: indentSwitch
   });
 
-  def(['text/x-avs-texer2', 'avs/texer2', 'avs/t2'], {
+  def(['avs/texer2', 'avs/t2'], {
     name: 'avs',
     variables: words(
       'n w h i x y v b iw ih sizex sizey red green blue skip'
@@ -458,7 +458,7 @@
     indentSwitch: indentSwitch
   });
 
-  def(['text/x-avs-triangle', 'avs/triangle', 'avs/tr'], {
+  def(['avs/triangle', 'avs/tr'], {
     name: 'avs',
     variables: words(
       'n x1 x2 x3 y1 y2 y3 z1 skip red1 blue1 green1 w h zbclear zbuf'
