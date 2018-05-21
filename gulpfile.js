@@ -7,32 +7,32 @@ const uglify = require('gulp-uglify');
 
 // File definitions
 const jsFiles = [
-    './src/*.js'
+'./src/*.js'
 ];
 
 const options = {
-    output: {
-        comments: /^!/
-    }
+  output: {
+    comments: /^!/
+  }
 };
 
 // Build custom PrismJS version with NSIS
 gulp.task('build', (done) => {
-    gulp.src(jsFiles)
-        .pipe(uglify(options))
-        .pipe(concat('avs.min.js'))
-        .pipe(gulp.dest('dist'));
-    done();
+  gulp.src(jsFiles)
+  .pipe(uglify(options))
+  .pipe(concat('avs.min.js'))
+  .pipe(gulp.dest('dist'));
+  done();
 });
 
 // Lint JavaScript files
 gulp.task('lint', (done) => {
-    gulp.src(jsFiles)
-        .pipe(debug({title: 'eslint:'}))
-        .pipe(eslint())
-        .pipe(eslint.format())
-        .pipe(eslint.failAfterError());
-    done();
+  gulp.src(jsFiles)
+  .pipe(debug({title: 'eslint:'}))
+  .pipe(eslint())
+  .pipe(eslint.format())
+  .pipe(eslint.failAfterError());
+  done();
 });
 
 // Tasks
