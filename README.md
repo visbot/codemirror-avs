@@ -35,6 +35,9 @@ Example usage on website
 <head>
   <!-- Import CodeMirror styles -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5/lib/codemirror.min.css">
+
+  <!-- Optional: Import a CodeMirror theme -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@visbot/codemirror-avs@latest/dist/avs.css">
 <head>
 </head>
 <body>
@@ -45,7 +48,7 @@ Example usage on website
   <script src="https://cdn.jsdelivr.net/npm/codemirror@5/lib/codemirror.min.js"></script>
 
   <!-- Import AVS mode -->
-  <script src="https://cdn.jsdelivr.net/npm/@visbot/codemirror-avs@latest/dist/avs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@visbot/codemirror-avs@latest/dist/avs.js"></script>
 
   <!-- Initialize CodeMirror -->
   <script type="text/javascript">
