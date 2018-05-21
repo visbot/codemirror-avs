@@ -1,6 +1,6 @@
 {
   "name": "@visbot/codemirror-avs",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A mode for Winamp AVS to use with CodeMirror, the versatile text editor implemented in JavaScript for the browser.",
   "main": "dist/avs.min.js",
   "scripts": {
