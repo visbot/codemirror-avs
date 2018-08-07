@@ -1,9 +1,9 @@
 # codemirror-avs
 
-[![npm](https://img.shields.io/npm/l/@visbot/codemirror-avs.svg?style=flat-square)](https://www.npmjs.org/package/@visbot/codemirror-avs)
-[![npm](https://img.shields.io/npm/v/@visbot/codemirror-avs.svg?style=flat-square)](https://www.npmjs.org/package/@visbot/codemirror-avs)
-[![CircleCI](https://img.shields.io/circleci/project/visbot/codemirror-avs.svg?style=flat-square)](https://circleci.com/gh/visbot/codemirror-avs)
-[![David](https://img.shields.io/david/dev/visbot/codemirror-avs.svg?style=flat-square)](https://david-dm.org/visbot/codemirror-avs?type=dev)
+[![npm](https://flat.badgen.net/npm/license/@visbot/codemirror-avs)](https://www.npmjs.org/package/@visbot/codemirror-avs)
+[![npm](https://flat.badgen.net/npm/v/@visbot/codemirror-avs)](https://www.npmjs.org/package/@visbot/codemirror-avs)
+[![CircleCI](https://flat.badgen.net/circleci/github/visbot/codemirror-avs)](https://circleci.com/gh/visbot/codemirror-avs)
+[![David](https://flat.badgen.net/david/dev/visbot/codemirror-avs)](https://david-dm.org/visbot/codemirror-avs?type=dev)
 
 ## Description
 
