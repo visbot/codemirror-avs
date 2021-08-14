@@ -468,7 +468,7 @@
     indentSwitch: indentSwitch
   });
 
-  def(['text/x-avs', 'avs'], {
+  def(['text/x-avs', 'avs', 'avs/*'], {
     name: 'avs',
     variables: words(
       'alpha alphain alphaout b beat bi blue blue1 clear d drawmode enabled green green1 h i ih isBeat isLBeat iw linesize n r red red1 sh sizex sizey skip sw v w x x1 x2 x3 y y1 y2 y3 z1 zbclear zbuf'
