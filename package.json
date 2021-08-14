@@ -24,18 +24,18 @@
   },
   "homepage": "https://visbot.github.io/codemirror-avs/",
   "dependencies": {
-    "codemirror": "^5.40.2"
+    "codemirror": "^5.62.2"
   },
   "devDependencies": {
-    "autoprefixer": "^9.1.5",
-    "babel-eslint": "^10.0.1",
-    "cssnano": "^4.1.4",
-    "eslint": "^5.6.0",
-    "gulp": "^4.0.0",
+    "autoprefixer": "^9.8.6",
+    "babel-eslint": "^10.1.0",
+    "cssnano": "^4.1.11",
+    "eslint": "^5.16.0",
+    "gulp": "^4.0.2",
     "gulp-debug": "^4.0.0",
     "gulp-eslint": "^5.0.0",
     "gulp-postcss": "^8.0.0",
-    "gulp-uglify": "^3.0.1"
+    "gulp-uglify": "^3.0.2"
   },
   "eslintConfig": {
     "parser": "babel-eslint"
