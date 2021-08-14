@@ -42,20 +42,20 @@ Example usage on website
   <textarea id="editor"></textarea>
 
   <!-- Import CodeMirror library -->
-  <script src="https://cdn.jsdelivr.net/npm/codemirror@5/lib/codemirror.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/codemirror@5/lib/codemirror.min.js"></script>
 
   <!-- Import AVS mode -->
-  <script src="https://cdn.jsdelivr.net/npm/@visbot/codemirror-avs@latest/dist/avs.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@visbot/codemirror-avs@latest/dist/avs.js"></script>
 
   <!-- Initialize CodeMirror -->
   <script type="text/javascript">
-    var editor = document.getElementById('editor');
-    var options = {
+    const editor = document.getElementById('editor');
+    const options = {
       lineNumbers: true,
       mode: 'avs'
     };
 
-    var cm = CodeMirror.fromTextArea(editor, options);
+    const cm = CodeMirror.fromTextArea(editor, options);
   </script>
 </body>
 </html>

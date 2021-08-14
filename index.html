@@ -151,13 +151,13 @@ drawmode=k;</textarea></p>
       </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/codemirror@5/lib/codemirror.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/codemirror@5/addon/edit/matchbrackets.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/@visbot/codemirror-avs@latest/dist/avs.js" defer></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/codemirror@5/lib/codemirror.min.js" defer></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/codemirror@5/addon/edit/matchbrackets.min.js" defer></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@visbot/codemirror-avs@latest/dist/avs.js" defer></script>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
-        var editors = document.getElementsByClassName('codemirror');
-        var options = {
+        const editors = document.getElementsByClassName('codemirror');
+        const options = {
           lineNumbers: true,
           matchBrackets: true,
           smartIndent: false,
@@ -166,7 +166,7 @@ drawmode=k;</textarea></p>
         };
 
         Object.keys(editors).forEach(function(i) {
-          var cm = CodeMirror.fromTextArea(editors[i], options);
+          const cm = CodeMirror.fromTextArea(editors[i], options);
         });
       });
     </script>
