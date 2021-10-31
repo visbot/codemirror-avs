@@ -4,8 +4,21 @@
   "description": "A mode for Winamp AVS to use with CodeMirror",
   "main": "dist/avs.min.js",
   "scripts": {
-    "build": "gulp build",
-    "test": "gulp lint"
+    "build:code": "rollup -c",
+    "build:style": "postcss src/avs.css -o dist/avs.css",
+    "build": "npm-run-all --parallel build:*",
+    "dev": "npm run watch",
+    "fix:code": "eslint ./src/avs.js --fix --ignore-path .gitignore",
+    "fix:style": "stylelint ./src/avs.css --fix",
+    "fix": "npm-run-all --parallel fix:*",
+    "lint:code": "eslint ./src/avs.js --ignore-path .gitignore",
+    "lint:style": "stylelint ./src/avs.css",
+    "lint": "npm-run-all --parallel lint:*",
+    "prepare": "husky install",
+    "start": "npm run watch",
+    "watch:code": "rollup -w -c",
+    "watch:style": "postcss -w src/avs.css -o dist/avs.css",
+    "watch": "npm-run-all --parallel watch:*"
   },
   "repository": {
     "type": "git",
@@ -24,20 +37,27 @@
   },
   "homepage": "https://visbot.github.io/codemirror-avs/",
   "dependencies": {
-    "codemirror": "^5.62.2"
+    "codemirror": "^5.63.3"
   },
   "devDependencies": {
-    "autoprefixer": "^9.8.6",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-typescript": "^8.3.0",
     "babel-eslint": "^10.1.0",
-    "cssnano": "^4.1.11",
-    "eslint": "^5.16.0",
-    "gulp": "^4.0.2",
-    "gulp-debug": "^4.0.0",
-    "gulp-eslint": "^5.0.0",
-    "gulp-postcss": "^8.0.0",
-    "gulp-uglify": "^3.0.2"
+    "cssnano": "^5.0.8",
+    "eslint": "^8.1.0",
+    "eslint-plugin-json": "^3.1.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.3.11",
+    "postcss-cli": "^9.0.1",
+    "rollup": "^2.58.3",
+    "rollup-plugin-terser": "^7.0.2",
+    "stylelint": "^14.0.1",
+    "stylelint-config-recommended": "^6.0.0"
   },
-  "eslintConfig": {
-    "parser": "babel-eslint"
+  "lint-staged": {
+    "*.(js|json)": "eslint --cache --fix"
   }
 }

@@ -1,2 +1,477 @@
-/*! codemirror-avs | MIT License | github.com/visbot/codemirror-avs */
-!function(e){"object"==typeof exports&&"object"==typeof module?e(require("codemirror")):"function"==typeof define&&define.amd?define(["codemirror"],e):e(CodeMirror)}(function(E){"use strict";function O(e,t,n,i,a,r){this.indented=e,this.column=t,this.type=n,this.info=i,this.align=a,this.prev=r}function T(e,t,n,i){var a=e.indented;return e.context&&"statement"==e.context.type&&"statement"!=n&&(a=e.context.indented),e.context=new O(a,t,n,i,null,e.context)}function q(e){var t=e.context.type;return")"!=t&&"]"!=t&&"}"!=t||(e.indented=e.context.indented),e.context=e.context.prev}function A(e,t,n){return"variable"==t.prevToken||"type"==t.prevToken||(!!/\S(?:[^- ]>|[*\]])\s*$|\*$/.test(e.string.slice(0,n))||(!(!t.typeAtEndOfLine||e.column()!=e.indentation())||void 0))}function P(e){for(;;){if(!e||"top"==e.type)return 1;if("}"==e.type&&"namespace"!=e.prev.info)return;e=e.prev}}function e(e){for(var t={},n=e.split(" "),i=0;i<n.length;++i)t[n[i]]=!0;return t}function B(e,t){return"function"==typeof e?e(t):e.propertyIsEnumerable(t)}function t(e,t){"string"==typeof e&&(e=[e]);var n=[];function i(e){if(e)for(var t in e)e.hasOwnProperty(t)&&n.push(t)}i(t.variables),i(t.builtin),i(t.constants),n.length&&(t.helperType=e[0],E.registerHelper("hintWords",e[0],n));for(var a=0;a<e.length;++a)E.defineMIME(e[a],t)}E.defineMode("avs",function(e,r){var s,o,l=e.indentUnit,c=r.statementIndentUnit||l,u=r.dontAlignCalls,a=r.keywords||{},d=r.builtin||{},f=r.blockKeywords||{},v=r.defKeywords||{},m=r.types||{},p=r.constants||{},b=r.variables||{},y=r.hooks||{},h=r.multiLineStrings,x=!1!==r.indentStatements,w=(r.indentSwitch,r.namespaceSeparator),g=r.isPunctuationChar||/[\[\]{}\(\),;\:\.]/,k=r.numberStart||/[\d\.]/,S=r.number||/^(?:0x[a-f\d]+|0b[01]+|(?:\d+\.?\d*|\.\d+)(?:e[-+]?\d+)?)(u|ll?|l|f)?/i,z=r.isOperatorChar||/[+\-*&%=<>!?|\/]/,C=r.isIdentifierChar||/[\w\$_\xa1-\uffff]/;function $(e,t){var r,n=e.next();if(y[n]){var i=y[n](e,t);if(!1!==i)return i}if('"'==n||"'"==n)return t.tokenize=(r=n,function(e,t){for(var n,i=!1,a=!1;null!=(n=e.next());){if(n==r&&!i){a=!0;break}i=!i&&"\\"==n}return!a&&(i||h)||(t.tokenize=null),"string"}),t.tokenize(e,t);if(g.test(n))return s=n,null;if(k.test(n)){if(e.backUp(1),e.match(S))return"number";e.next()}if("/"==n){if(e.eat("*"))return(t.tokenize=I)(e,t);if(e.eat("/"))return e.skipToEnd(),"comment"}if(z.test(n)){for(;!e.match(/^\/[\/*]/,!1)&&e.eat(z););return"operator"}if(e.eatWhile(C),w)for(;e.match(w);)e.eatWhile(C);n=e.current();return B(a,n)?(B(f,n)&&(s="newstatement"),B(v,n)&&(o=!0),"keyword"):B(m,n)?"type":B(d,n)?(B(f,n)&&(s="newstatement"),"builtin"):B(b,n)?"variable":B(p,n)?"variable-2":"keyword"}function I(e,t){for(var n,i=!1;n=e.next();){if("/"==n&&i){t.tokenize=null;break}i="*"==n}return"comment"}function L(e,t){r.typeFirstDefinitions&&e.eol()&&P(t.context)&&(t.typeAtEndOfLine=A(e,t,e.pos))}return{startState:function(e){return{tokenize:null,context:new O((e||0)-l,0,"top",null,!1),indented:0,startOfLine:!0,prevToken:null}},token:function(e,t){var n=t.context;if(e.sol()&&(null==n.align&&(n.align=!1),t.indented=e.indentation(),t.startOfLine=!0),e.eatSpace())return L(e,t),null;s=o=null;var i,a=(t.tokenize||$)(e,t);if("comment"==a||"meta"==a)return a;if(null==n.align&&(n.align=!0),";"==s||":"==s||","==s&&e.match(/^\s*(?:\/\/.*)?$/,!1))for(;"statement"==t.context.type;)q(t);else if("{"==s)T(t,e.column(),"}");else if("["==s)T(t,e.column(),"]");else if("("==s)T(t,e.column(),")");else if("}"==s){for(;"statement"==n.type;)n=q(t);for("}"==n.type&&(n=q(t));"statement"==n.type;)n=q(t)}else s==n.type?q(t):x&&(("}"==n.type||"top"==n.type)&&";"!=s||"statement"==n.type&&"newstatement"==s)&&T(t,e.column(),"statement",e.current());return"variable"==a&&("def"==t.prevToken||r.typeFirstDefinitions&&A(e,t,e.start)&&P(t.context)&&e.match(/^\s*\(/,!1))&&(a="def"),!y.token||void 0!==(i=y.token(e,t,a))&&(a=i),"def"==a&&!1===r.styleDefs&&(a="variable"),t.startOfLine=!1,t.prevToken=o?"def":a||s,L(e,t),a},indent:function(e,t){if(e.tokenize!=$&&null!=e.tokenize||e.typeAtEndOfLine)return E.Pass;var n=e.context,i=t&&t.charAt(0);if("statement"==n.type&&"}"==i&&(n=n.prev),r.dontIndentStatements)for(;"statement"==n.type&&r.dontIndentStatements.test(n.info);)n=n.prev;if(y.indent){var a=y.indent(e,n,t);if("number"==typeof a)return a}e=i==n.type,a=n.prev&&"switch"==n.prev.info;if(r.allmanIndentation&&/[{(]/.test(i)){for(;"top"!=n.type&&"}"!=n.type;)n=n.prev;return n.indented}return"statement"==n.type?n.indented+("{"==i?0:c):!n.align||u&&")"==n.type?")"!=n.type||e?n.indented+(e?0:l)+(e||!a||/^(?:case|default)\b/.test(t)?0:l):n.indented+c:n.column+(e?0:1)},blockCommentStart:"/*",blockCommentEnd:"*/",blockCommentContinue:" * ",lineComment:"//"}});var n=e("abs sin cos tan asin acos atan atan2 sqr sqrt invsqrt pow exp log log10 floor ceil sign min max sigmoid rand band bor bnot if assign exec2 equal above below getosc getspec gettime getkbmouse megabuf gmegabuf loop"),i=e("$e $phi $pi $E $PHI $PI"),a=!1;t(["avs/bump"],{name:"avs",variables:e("x y isBeat isLBeat bi"),builtin:n,constants:i,indentSwitch:a}),t(["avs/color-modifier","avs/cm"],{name:"avs",variables:e("red green blue"),builtin:n,constants:i,indentSwitch:a}),t(["avs/dynamic-distance-modifier","avs/ddm"],{name:"avs",variables:e("d"),builtin:n,constants:i,indentSwitch:a}),t(["avs/dynamic-movement","avs/dm"],{name:"avs",variables:e("x y w h r d alpha"),builtin:n,constants:i,indentSwitch:a}),t(["avs/dynamic-shift","avs/ds"],{name:"avs",variables:e("x y w h b alpha"),builtin:n,constants:i,indentSwitch:a}),t(["avs/effect-list","avs/el"],{name:"avs",variables:e("enabled beat clear alphain alphaout w h"),builtin:n,constants:i,indentSwitch:a}),t(["avs/movement","avs/mov"],{name:"avs",variables:e("r d x y sw sh"),builtin:n,constants:i,indentSwitch:a}),t(["avs/superscope","avs/ssc"],{name:"avs",variables:e("n x y i v b red green blue linesize skip drawmode w h"),builtin:n,constants:i,indentSwitch:a}),t(["avs/texer2","avs/t2"],{name:"avs",variables:e("n w h i x y v b iw ih sizex sizey red green blue skip"),builtin:n,constants:i,indentSwitch:a}),t(["avs/triangle","avs/tr"],{name:"avs",variables:e("n x1 x2 x3 y1 y2 y3 z1 skip red1 blue1 green1 w h zbclear zbuf"),builtin:n,constants:i,indentSwitch:a}),t(["text/x-avs","avs","avs/*"],{name:"avs",variables:e("alpha alphain alphaout b beat bi blue blue1 clear d drawmode enabled green green1 h i ih isBeat isLBeat iw linesize n r red red1 sh sizex sizey skip sw v w x x1 x2 x3 y y1 y2 y3 z1 zbclear zbuf"),builtin:n,constants:i,indentSwitch:a})});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('codemirror')) :
+  typeof define === 'function' && define.amd ? define(['codemirror'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.CodeMirror));
+})(this, (function (CodeMirror) { 'use strict';
+
+  function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+  var CodeMirror__default = /*#__PURE__*/_interopDefaultLegacy(CodeMirror);
+
+  /*! codemirror-avs | MIT License | github.com/visbot/codemirror-avs */
+
+  function Context(indented, column, type, info, align, prev) {
+    this.indented = indented;
+    this.column = column;
+    this.type = type;
+    this.info = info;
+    this.align = align;
+    this.prev = prev;
+  }
+
+  function pushContext(state, col, type, info) {
+    var indent = state.indented;
+    if (
+      state.context &&
+      state.context.type == 'statement' &&
+      type != 'statement'
+    )
+      indent = state.context.indented;
+    return (state.context = new Context(
+      indent,
+      col,
+      type,
+      info,
+      null,
+      state.context
+    ));
+  }
+
+  function popContext(state) {
+    var t = state.context.type;
+    if (t == ')' || t == ']' || t == '}')
+      state.indented = state.context.indented;
+    return (state.context = state.context.prev);
+  }
+
+  function typeBefore(stream, state, pos) {
+    if (state.prevToken == 'variable' || state.prevToken == 'type') return true;
+    if (/\S(?:[^- ]>|[*\]])\s*$|\*$/.test(stream.string.slice(0, pos)))
+      return true;
+    if (state.typeAtEndOfLine && stream.column() == stream.indentation())
+      return true;
+  }
+
+  function isTopScope(context) {
+    for (;;) {
+      if (!context || context.type == 'top') return true;
+      if (context.type == '}' && context.prev.info != 'namespace') return false;
+      context = context.prev;
+    }
+  }
+
+  CodeMirror__default["default"].defineMode('avs', function(config, parserConfig) {
+    var indentUnit = config.indentUnit;
+    var statementIndentUnit = parserConfig.statementIndentUnit || indentUnit;
+    var dontAlignCalls = parserConfig.dontAlignCalls;
+    var keywords = parserConfig.keywords || {};
+    var builtin = parserConfig.builtin || {};
+    var blockKeywords = parserConfig.blockKeywords || {};
+    var defKeywords = parserConfig.defKeywords || {};
+    var types = parserConfig.types || {};
+    var constants = parserConfig.constants || {};
+    var variables = parserConfig.variables || {};
+    var hooks = parserConfig.hooks || {};
+    var multiLineStrings = parserConfig.multiLineStrings;
+    var indentStatements = parserConfig.indentStatements !== false;
+    parserConfig.indentSwitch !== false;
+    var namespaceSeparator = parserConfig.namespaceSeparator;
+    var isPunctuationChar = parserConfig.isPunctuationChar || /[\[\]{}\(\),;\:\.]/;
+    var numberStart = parserConfig.numberStart || /[\d\.]/;
+    var number = parserConfig.number || /^(?:0x[a-f\d]+|0b[01]+|(?:\d+\.?\d*|\.\d+)(?:e[-+]?\d+)?)(u|ll?|l|f)?/i;
+    var isOperatorChar = parserConfig.isOperatorChar || /[+\-*&%=<>!?|\/]/;
+    var isIdentifierChar = parserConfig.isIdentifierChar || /[\w\$_\xa1-\uffff]/;
+
+    var curPunc;
+    var isDefKeyword;
+
+    function tokenBase(stream, state) {
+      var ch = stream.next();
+
+      if (hooks[ch]) {
+        var result = hooks[ch](stream, state);
+        if (result !== false) return result;
+      }
+
+      if (ch == '"' || ch == "'") {
+        state.tokenize = tokenString(ch);
+        return state.tokenize(stream, state);
+      }
+
+      if (isPunctuationChar.test(ch)) {
+        curPunc = ch;
+        return null;
+      }
+
+      if (numberStart.test(ch)) {
+        stream.backUp(1);
+        if (stream.match(number)) return 'number';
+        stream.next();
+      }
+
+      if (ch == '/') {
+        if (stream.eat('*')) {
+          state.tokenize = tokenComment;
+          return tokenComment(stream, state);
+        }
+        if (stream.eat('/')) {
+          stream.skipToEnd();
+          return 'comment';
+        }
+      }
+
+      if (isOperatorChar.test(ch)) {
+        while (
+          !stream.match(/^\/[\/*]/, false) &&
+          stream.eat(isOperatorChar)
+        ) {}
+        return 'operator';
+      }
+
+      stream.eatWhile(isIdentifierChar);
+
+      if (namespaceSeparator)
+        while (stream.match(namespaceSeparator))
+          stream.eatWhile(isIdentifierChar);
+
+      var cur = stream.current();
+
+      if (contains(keywords, cur)) {
+        if (contains(blockKeywords, cur)) curPunc = 'newstatement';
+        if (contains(defKeywords, cur)) isDefKeyword = true;
+        return 'keyword';
+      }
+
+      if (contains(types, cur)) return 'type';
+
+      if (contains(builtin, cur)) {
+        if (contains(blockKeywords, cur)) curPunc = 'newstatement';
+        return 'builtin';
+      }
+
+      if (contains(variables, cur)) return 'variable';
+      if (contains(constants, cur)) return 'variable-2';
+
+      return 'keyword';
+    }
+
+    function tokenString(quote) {
+      return function(stream, state) {
+        var escaped = false,
+          next,
+          end = false;
+        while ((next = stream.next()) != null) {
+          if (next == quote && !escaped) {
+            end = true;
+            break;
+          }
+          escaped = !escaped && next == '\\';
+        }
+        if (end || !(escaped || multiLineStrings)) state.tokenize = null;
+        return 'string';
+      };
+    }
+
+    function tokenComment(stream, state) {
+      var maybeEnd = false,
+        ch;
+      while ((ch = stream.next())) {
+        if (ch == '/' && maybeEnd) {
+          state.tokenize = null;
+          break;
+        }
+        maybeEnd = ch == '*';
+      }
+      return 'comment';
+    }
+
+    function maybeEOL(stream, state) {
+      if (
+        parserConfig.typeFirstDefinitions &&
+        stream.eol() &&
+        isTopScope(state.context)
+      )
+        state.typeAtEndOfLine = typeBefore(stream, state, stream.pos);
+    }
+
+    // Interface
+
+    return {
+      startState: function(basecolumn) {
+        return {
+          tokenize: null,
+          context: new Context(
+            (basecolumn || 0) - indentUnit,
+            0,
+            'top',
+            null,
+            false
+          ),
+          indented: 0,
+          startOfLine: true,
+          prevToken: null
+        };
+      },
+
+      token: function(stream, state) {
+        var ctx = state.context;
+        if (stream.sol()) {
+          if (ctx.align == null) ctx.align = false;
+          state.indented = stream.indentation();
+          state.startOfLine = true;
+        }
+        if (stream.eatSpace()) {
+          maybeEOL(stream, state);
+          return null;
+        }
+        curPunc = isDefKeyword = null;
+        var style = (state.tokenize || tokenBase)(stream, state);
+        if (style == 'comment' || style == 'meta') return style;
+        if (ctx.align == null) ctx.align = true;
+
+        if (
+          curPunc == ';' ||
+          curPunc == ':' ||
+          (curPunc == ',' && stream.match(/^\s*(?:\/\/.*)?$/, false))
+        )
+          while (state.context.type == 'statement') popContext(state);
+        else if (curPunc == '{') pushContext(state, stream.column(), '}');
+        else if (curPunc == '[') pushContext(state, stream.column(), ']');
+        else if (curPunc == '(') pushContext(state, stream.column(), ')');
+        else if (curPunc == '}') {
+          while (ctx.type == 'statement') ctx = popContext(state);
+          if (ctx.type == '}') ctx = popContext(state);
+          while (ctx.type == 'statement') ctx = popContext(state);
+        } else if (curPunc == ctx.type) popContext(state);
+        else if (
+          indentStatements &&
+          (((ctx.type == '}' || ctx.type == 'top') && curPunc != ';') ||
+            (ctx.type == 'statement' && curPunc == 'newstatement'))
+        ) {
+          pushContext(state, stream.column(), 'statement', stream.current());
+        }
+
+        if (
+          style == 'variable' &&
+          (state.prevToken == 'def' ||
+            (parserConfig.typeFirstDefinitions &&
+              typeBefore(stream, state, stream.start) &&
+              isTopScope(state.context) &&
+              stream.match(/^\s*\(/, false)))
+        )
+          style = 'def';
+
+        if (hooks.token) {
+          var result = hooks.token(stream, state, style);
+          if (result !== undefined) style = result;
+        }
+
+        if (style == 'def' && parserConfig.styleDefs === false)
+          style = 'variable';
+
+        state.startOfLine = false;
+        state.prevToken = isDefKeyword ? 'def' : style || curPunc;
+        maybeEOL(stream, state);
+        return style;
+      },
+
+      indent: function(state, textAfter) {
+        if (
+          (state.tokenize != tokenBase && state.tokenize != null) ||
+          state.typeAtEndOfLine
+        )
+          return CodeMirror__default["default"].Pass;
+        var ctx = state.context,
+          firstChar = textAfter && textAfter.charAt(0);
+        if (ctx.type == 'statement' && firstChar == '}') ctx = ctx.prev;
+        if (parserConfig.dontIndentStatements)
+          while (
+            ctx.type == 'statement' &&
+            parserConfig.dontIndentStatements.test(ctx.info)
+          )
+            ctx = ctx.prev;
+        if (hooks.indent) {
+          var hook = hooks.indent(state, ctx, textAfter);
+          if (typeof hook == 'number') return hook;
+        }
+        var closing = firstChar == ctx.type;
+        var switchBlock = ctx.prev && ctx.prev.info == 'switch';
+        if (parserConfig.allmanIndentation && /[{(]/.test(firstChar)) {
+          while (ctx.type != 'top' && ctx.type != '}') ctx = ctx.prev;
+          return ctx.indented;
+        }
+        if (ctx.type == 'statement')
+          return ctx.indented + (firstChar == '{' ? 0 : statementIndentUnit);
+        if (ctx.align && (!dontAlignCalls || ctx.type != ')'))
+          return ctx.column + (closing ? 0 : 1);
+        if (ctx.type == ')' && !closing)
+          return ctx.indented + statementIndentUnit;
+
+        return (
+          ctx.indented +
+          (closing ? 0 : indentUnit) +
+          (!closing && switchBlock && !/^(?:case|default)\b/.test(textAfter)
+            ? indentUnit
+            : 0)
+        );
+      },
+      blockCommentStart: '/*',
+      blockCommentEnd: '*/',
+      blockCommentContinue: ' * ',
+      lineComment: '//'
+    };
+  });
+
+  function words(str) {
+    var obj = {},
+      words = str.split(' ');
+    for (var i = 0; i < words.length; ++i) obj[words[i]] = true;
+    return obj;
+  }
+
+  function contains(words, word) {
+    if (typeof words === 'function') {
+      return words(word);
+    } else {
+      return words.propertyIsEnumerable(word);
+    }
+  }
+
+  function def(mimes, mode) {
+    if (typeof mimes == 'string') mimes = [mimes];
+    var words = [];
+    function add(obj) {
+      if (obj)
+        for (var prop in obj) if (obj.hasOwnProperty(prop)) words.push(prop);
+    }
+    add(mode.variables);
+    add(mode.builtin);
+    add(mode.constants);
+    if (words.length) {
+      mode.helperType = mimes[0];
+      CodeMirror__default["default"].registerHelper('hintWords', mimes[0], words);
+    }
+
+    for (var i = 0; i < mimes.length; ++i)
+      CodeMirror__default["default"].defineMIME(mimes[i], mode);
+  }
+
+  var builtin = words(
+    'abs sin cos tan asin acos atan atan2 sqr sqrt invsqrt pow exp log log10 floor ceil sign min max sigmoid rand band bor bnot if assign exec2 equal above below getosc getspec gettime getkbmouse megabuf gmegabuf loop'
+  );
+  var constants = words(
+    '$e $phi $pi $E $PHI $PI'
+  );
+  var indentSwitch = false;
+
+  def(['avs/bump'], {
+    name: 'avs',
+    variables: words(
+      'x y isBeat isLBeat bi'
+    ),
+    builtin: builtin,
+    constants: constants,
+    indentSwitch: indentSwitch
+  });
+
+  def(['avs/color-modifier', 'avs/cm'], {
+    name: 'avs',
+    variables: words(
+      'red green blue'
+    ),
+    builtin: builtin,
+    constants: constants,
+    indentSwitch: indentSwitch
+  });
+
+  def(['avs/dynamic-distance-modifier', 'avs/ddm'], {
+    name: 'avs',
+    variables: words(
+      'd'
+    ),
+    builtin: builtin,
+    constants: constants,
+    indentSwitch: indentSwitch
+  });
+
+  def(['avs/dynamic-movement', 'avs/dm'], {
+    name: 'avs',
+    variables: words(
+      'x y w h r d alpha'
+    ),
+    builtin: builtin,
+    constants: constants,
+    indentSwitch: indentSwitch
+  });
+
+  def(['avs/dynamic-shift', 'avs/ds'], {
+    name: 'avs',
+    variables: words(
+      'x y w h b alpha'
+    ),
+    builtin: builtin,
+    constants: constants,
+    indentSwitch: indentSwitch
+  });
+
+  def(['avs/effect-list', 'avs/el'], {
+    name: 'avs',
+    variables: words(
+      'enabled beat clear alphain alphaout w h'
+    ),
+    builtin: builtin,
+    constants: constants,
+    indentSwitch: indentSwitch
+  });
+
+  def(['avs/movement', 'avs/mov'], {
+    name: 'avs',
+    variables: words(
+      'r d x y sw sh'
+    ),
+    builtin: builtin,
+    constants: constants,
+    indentSwitch: indentSwitch
+  });
+
+  def(['avs/superscope', 'avs/ssc'], {
+    name: 'avs',
+    variables: words(
+      'n x y i v b red green blue linesize skip drawmode w h'
+    ),
+    builtin: builtin,
+    constants: constants,
+    indentSwitch: indentSwitch
+  });
+
+  def(['avs/texer2', 'avs/t2'], {
+    name: 'avs',
+    variables: words(
+      'n w h i x y v b iw ih sizex sizey red green blue skip'
+    ),
+    builtin: builtin,
+    constants: constants,
+    indentSwitch: indentSwitch
+  });
+
+  def(['avs/triangle', 'avs/tr'], {
+    name: 'avs',
+    variables: words(
+      'n x1 x2 x3 y1 y2 y3 z1 skip red1 blue1 green1 w h zbclear zbuf'
+    ),
+    builtin: builtin,
+    constants: constants,
+    indentSwitch: indentSwitch
+  });
+
+  def(['text/x-avs', 'avs', 'avs/*'], {
+    name: 'avs',
+    variables: words(
+      'alpha alphain alphaout b beat bi blue blue1 clear d drawmode enabled green green1 h i ih isBeat isLBeat iw linesize n r red red1 sh sizex sizey skip sw v w x x1 x2 x3 y y1 y2 y3 z1 zbclear zbuf'
+    ),
+    builtin: builtin,
+    constants: constants,
+    indentSwitch: indentSwitch
+  });
+
+}));

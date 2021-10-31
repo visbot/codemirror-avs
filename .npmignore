@@ -5,15 +5,28 @@ vendor/
 
 # package manager files
 npm-debug.log*
-yarn-error.log
-yarn.lock
+pnp-lock.yaml
 shrinkwrap.yaml
+yarn-error.log
 
 # development
+.circleci/
+.editorconfig
 .eslintcache
+.github/
+.husky/
+src/
+test/
 tsconfig.tsbuildinfo
 
 # project specific
 test.js
 test.ts
 todo.md
+
+# files
+.gitignore
+.travis.yml
+gulpfile.js
+tsconfig.json
+tslint.json
