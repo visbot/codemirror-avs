@@ -2,7 +2,7 @@
 
 [![npm](https://flat.badgen.net/npm/license/@visbot/codemirror-avs)](https://www.npmjs.org/package/@visbot/codemirror-avs)
 [![npm](https://flat.badgen.net/npm/v/@visbot/codemirror-avs)](https://www.npmjs.org/package/@visbot/codemirror-avs)
-[![CircleCI](https://flat.badgen.net/circleci/github/visbot/codemirror-avs)](https://circleci.com/gh/visbot/codemirror-avs)
+[![CI](https://img.shields.io/github/workflow/status/visbot/codemirror-avs/CI?style=flat-square)](https://github.com/visbot/codemirror-avs/actions)
 [![David](https://flat.badgen.net/david/dev/visbot/codemirror-avs)](https://david-dm.org/visbot/codemirror-avs?type=dev)
 
 ## Description
