@@ -17,7 +17,7 @@ const plugins = [
 
 export default [
   {
-    input: 'src/avs.mjs',
+    input: 'src/avs.js',
     output: {
       ...output,
       file: 'dist/avs.js',
@@ -25,7 +25,7 @@ export default [
     plugins: plugins
   },
   {
-    input: 'src/avs.mjs',
+    input: 'src/avs.js',
     output: {
       ...output,
       file: 'dist/avs.min.js'

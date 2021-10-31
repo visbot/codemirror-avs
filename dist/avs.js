@@ -74,13 +74,12 @@
     var hooks = parserConfig.hooks || {};
     var multiLineStrings = parserConfig.multiLineStrings;
     var indentStatements = parserConfig.indentStatements !== false;
-    parserConfig.indentSwitch !== false;
     var namespaceSeparator = parserConfig.namespaceSeparator;
-    var isPunctuationChar = parserConfig.isPunctuationChar || /[\[\]{}\(\),;\:\.]/;
-    var numberStart = parserConfig.numberStart || /[\d\.]/;
+    var isPunctuationChar = parserConfig.isPunctuationChar || /[[\]{}(),;:.]/;
+    var numberStart = parserConfig.numberStart || /[\d.]/;
     var number = parserConfig.number || /^(?:0x[a-f\d]+|0b[01]+|(?:\d+\.?\d*|\.\d+)(?:e[-+]?\d+)?)(u|ll?|l|f)?/i;
-    var isOperatorChar = parserConfig.isOperatorChar || /[+\-*&%=<>!?|\/]/;
-    var isIdentifierChar = parserConfig.isIdentifierChar || /[\w\$_\xa1-\uffff]/;
+    var isOperatorChar = parserConfig.isOperatorChar || /[+\-*&%=<>!?|/]/;
+    var isIdentifierChar = parserConfig.isIdentifierChar || /[\w$_\xa1-\uffff]/;
 
     var curPunc;
     var isDefKeyword;
@@ -122,9 +121,9 @@
 
       if (isOperatorChar.test(ch)) {
         while (
-          !stream.match(/^\/[\/*]/, false) &&
+          !stream.match(/^\/[/*]/, false) &&
           stream.eat(isOperatorChar)
-        ) {}
+        )
         return 'operator';
       }
 
@@ -333,7 +332,7 @@
     if (typeof words === 'function') {
       return words(word);
     } else {
-      return words.propertyIsEnumerable(word);
+      return Object.prototype.propertyIsEnumerable.call(words, word);
     }
   }
 
@@ -342,7 +341,7 @@
     var words = [];
     function add(obj) {
       if (obj)
-        for (var prop in obj) if (obj.hasOwnProperty(prop)) words.push(prop);
+        for (var prop in obj) if (Object.prototype.hasOwnProperty.call(obj, prop)) words.push(prop);
     }
     add(mode.variables);
     add(mode.builtin);
