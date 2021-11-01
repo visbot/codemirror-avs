@@ -61,6 +61,8 @@ Example usage on website
 </html>
 ```
 
+**Note**: If you want to load CodeMirror from a CDN, make sure to specify a specific version for better performance – the example above doesn't to keep it simple.
+
 ### Modes
 
 Beside the loose `avs` mode, you can specify stricter modes for specific components:
