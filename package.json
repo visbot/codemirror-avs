@@ -37,7 +37,7 @@
   },
   "homepage": "https://visbot.github.io/codemirror-avs/",
   "dependencies": {
-    "codemirror": "^5.63.3"
+    "codemirror": ">=5.63 <6"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.1",
