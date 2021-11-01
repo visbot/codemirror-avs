@@ -1,6 +1,6 @@
 {
   "name": "@visbot/codemirror-avs",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Winamp AVS mode for CodeMirror 5",
   "main": "dist/avs.min.js",
   "files:": [
