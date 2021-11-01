@@ -45,7 +45,7 @@ Example usage on website
   <script defer src="https://cdn.jsdelivr.net/npm/codemirror@5/lib/codemirror.min.js"></script>
 
   <!-- Import AVS mode -->
-  <script defer src="https://cdn.jsdelivr.net/npm/@visbot/codemirror-avs@latest/dist/avs.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@visbot/codemirror-avs@latest/dist/avs.min.js"></script>
 
   <!-- Initialize CodeMirror -->
   <script type="text/javascript">

@@ -1,7 +1,7 @@
 {
   "name": "@visbot/codemirror-avs",
   "version": "0.2.2",
-  "description": "A mode for Winamp AVS to use with CodeMirror",
+  "description": "Winamp AVS mode for CodeMirror 5",
   "main": "dist/avs.min.js",
   "scripts": {
     "build:code": "rollup -c",
