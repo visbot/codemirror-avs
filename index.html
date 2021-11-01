@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Winamp AVS mode for CodeMirror 5">
-  <title>Demo | @visbot/codemirror-avs</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5/lib/codemirror.min.css">
-  <link rel="stylesheet" href="dist/avs.min.css">
-  <style>
-    label {
-      font-weight: bold;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md">
-        <h1 class="h3">@visbot/codemirror-avs</h1>
-        <p>A mode for <a href="https://www.wikiwand.com/en/Advanced_Visualization_Studio">Winamp AVS</a> to use with <a href="https://codemirror.net/">CodeMirror</a>, the versatile text editor implemented in JavaScript for the browser.</p>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Winamp AVS mode for CodeMirror 5" />
+    <title>Demo | @visbot/codemirror-avs</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5/lib/codemirror.min.css" />
+    <link rel="stylesheet" href="dist/avs.min.css" />
+    <style>
+      label {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md">
+          <h1 class="h3">@visbot/codemirror-avs</h1>
+          <p>A mode for <a href="https://www.wikiwand.com/en/Advanced_Visualization_Studio">Winamp AVS</a> to use with <a href="https://codemirror.net/">CodeMirror</a>, the versatile text editor implemented in JavaScript for the browser.</p>
 
-        <h2 class="h5">Example</h2>
-        <p>Let's take a look at this SuperScope from NemoOrange's <a href="https://www.youtube.com/watch?v=oNg4QxUQ2Js&list=PLE94B3AE5C75A0132&index=15">Jaxx</a> preset. Feel free to edit the code in order to test the highlighter and <a href="https://github.com/visbot/codemirror-avs/issues">report an issue</a> if you come across something fishy.</p>
+          <h2 class="h5">Example</h2>
+          <p>Let's take a look at this SuperScope from NemoOrange's <a href="https://www.youtube.com/watch?v=oNg4QxUQ2Js&list=PLE94B3AE5C75A0132&index=15">Jaxx</a> preset. Feel free to edit the code in order to test the highlighter and <a href="https://github.com/visbot/codemirror-avs/issues">report an issue</a> if you come across something fishy.</p>
 
-        <p>
-          <label for="frame">Frame</label>
-          <textarea id="frame" class="codemirror">nn=if(below(w,500),4,if(below(w,1000),6,8));
+          <p>
+            <label for="frame">Frame</label>
+            <textarea id="frame" class="codemirror">
+nn=if(below(w,500),4,if(below(w,1000),6,8));
 n=ceil((w/nn))*2+4;
 m=1/(n-1);
 linesize=nn-1;
@@ -126,11 +127,14 @@ p=1;
 loop(n/2,exec2(
 assign(p,p+2),
 assign(megabuf(p+20000),
-sin(megabuf(p+23000))*cos(megabuf(p+23000)*.7))));</textarea></p>
+sin(megabuf(p+23000))*cos(megabuf(p+23000)*.7))));</textarea
+            >
+          </p>
 
-        <p>
-          <label for="beat">Beat</label>
-          <textarea id="beat" class="codemirror">uu=equal(ymt,dest)*floor(rand(18)/17);
+          <p>
+            <label for="beat">Beat</label>
+            <textarea id="beat" class="codemirror">
+uu=equal(ymt,dest)*floor(rand(18)/17);
 rb=rand(5)-3;
 ru=if(uu,ru+rb,ru);
 ymu=if(uu,.02*sign(rb),ymu);
@@ -141,11 +145,14 @@ p=1;
 loop(n/2,exec3(
 assign(p,p+2),
 assign(megabuf(p+21000),(rand(15)+85)*.01),
-assign(megabuf(p+22000),(rand(20)-10)*.01)));</textarea></p>
+assign(megabuf(p+22000),(rand(20)-10)*.01)));</textarea
+            >
+          </p>
 
-        <p>
-          <label for="point">Point</label>
-          <textarea id="point" class="codemirror">k=-k;
+          <p>
+            <label for="point">Point</label>
+            <textarea id="point" class="codemirror">
+k=-k;
 x=(i*2-1+m*-k)*(1+m*3);
 yt=megabuf(i*n+20000)+megabuf(i*n+20001);
 y=k*2+yt+ymt;
@@ -153,8 +160,11 @@ y=k*2+yt+ymt;
 red=megabuf(i*n+6000);
 green=megabuf(i*n+12000);
 blue=megabuf(i*n+18000);
-drawmode=k;</textarea></p>
+drawmode=k;</textarea
+            >
+          </p>
 
+          <p><a href="https://github.com/visbot/codemirror-avs">Code on GitHub</a></p>
         </div>
       </div>
     </div>
@@ -163,21 +173,20 @@ drawmode=k;</textarea></p>
     <script defer src="https://cdn.jsdelivr.net/npm/codemirror@5/addon/edit/matchbrackets.min.js" defer></script>
     <script defer src="dist/avs.min.js" defer></script>
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        const editors = document.getElementsByClassName('codemirror');
+      document.addEventListener("DOMContentLoaded", function () {
+        const editors = document.getElementsByClassName("codemirror");
         const options = {
           lineNumbers: true,
           matchBrackets: true,
           smartIndent: false,
-          mode: 'avs/ssc',
-          theme: 'bootstrap'
+          mode: "avs/ssc",
+          theme: "bootstrap",
         };
 
-        Object.keys(editors).forEach(function(i) {
+        Object.keys(editors).map(function (i) {
           const cm = CodeMirror.fromTextArea(editors[i], options);
         });
       });
     </script>
   </body>
 </html>
-
