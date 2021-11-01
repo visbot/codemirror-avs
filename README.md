@@ -52,7 +52,7 @@ Example usage on website
     const editor = document.getElementById('editor');
     const options = {
       lineNumbers: true,
-      mode: 'avs'
+      mode: 'avs/*'
     };
 
     const cm = CodeMirror.fromTextArea(editor, options);
@@ -65,7 +65,7 @@ Example usage on website
 
 ### Modes
 
-Beside the loose `avs` mode, you can specify stricter modes for specific components:
+Beside the loose `avs/*` mode, you can specify stricter modes for specific components:
 
 Mode                            | Effect
 --------------------------------|-------
