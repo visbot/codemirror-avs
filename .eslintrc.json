@@ -8,10 +8,13 @@
       "plugin:json/recommended"
     ],
     "parserOptions": {
-        "ecmaVersion": 13,
+        "ecmaVersion": 2020,
         "sourceType": "module"
     },
     "rules": {
+      "curly": 2,
+      "no-var": 2,
+      "object-curly-newline": 2
     },
     "ignorePatterns": [
       "bower_components",
