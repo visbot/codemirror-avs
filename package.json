@@ -3,6 +3,11 @@
   "version": "0.2.2",
   "description": "Winamp AVS mode for CodeMirror 5",
   "main": "dist/avs.min.js",
+  "files:": [
+    "dist",
+    "LICENSE",
+    "README"
+  ],
   "scripts": {
     "build:code": "rollup -c",
     "build:style": "postcss src/avs.css -o dist/avs.min.css",
