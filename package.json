@@ -5,7 +5,7 @@
   "main": "dist/avs.min.js",
   "scripts": {
     "build:code": "rollup -c",
-    "build:style": "postcss src/avs.css -o dist/avs.css",
+    "build:style": "postcss src/avs.css -o dist/avs.min.css",
     "build": "npm-run-all --parallel build:*",
     "dev": "npm run watch",
     "fix:code": "eslint ./src/avs.js --fix --ignore-path .gitignore",
@@ -17,7 +17,7 @@
     "prepare": "husky install",
     "start": "npm run watch",
     "watch:code": "rollup -w -c",
-    "watch:style": "postcss -w src/avs.css -o dist/avs.css",
+    "watch:style": "postcss -w src/avs.css -o dist/avs.min.css",
     "watch": "npm-run-all --parallel watch:*"
   },
   "repository": {
