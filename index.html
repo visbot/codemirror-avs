@@ -6,8 +6,8 @@
     <meta name="description" content="Winamp AVS mode for CodeMirror 5" />
     <title>Demo | @visbot/codemirror-avs</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5/lib/codemirror.min.css" />
-    <link rel="stylesheet" href="dist/avs.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5/lib/codemirror.min.css" media="print" onload="this.media='all'; this.onload=null;" />
+    <link rel="stylesheet" href="dist/theme.min.css" />
     <style>
       label {
         font-weight: bold;
@@ -171,16 +171,18 @@ drawmode=k;</textarea
 
     <script defer src="https://cdn.jsdelivr.net/npm/codemirror@5/lib/codemirror.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/codemirror@5/addon/edit/matchbrackets.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/codemirror@5.65.0/addon/edit/closebrackets.min.js"></script>
     <script defer src="dist/avs.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const editors = document.getElementsByClassName("codemirror");
         const options = {
+          autoCloseBrackets: true,
           lineNumbers: true,
           matchBrackets: true,
-          smartIndent: false,
           mode: "avs/ssc",
-          theme: "bootstrap",
+          smartIndent: false,
+          theme: "bootstrap"
         };
 
         Object.keys(editors).map(function (i) {
