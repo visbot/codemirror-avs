@@ -2,6 +2,12 @@
   "name": "@visbot/codemirror-avs",
   "version": "0.3.1",
   "description": "Winamp AVS mode for CodeMirror 5",
+  "author": "Jan T. Sott",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/visbot/codemirror-avs/issues"
+  },
+  "homepage": "https://visbot.github.io/codemirror-avs/",
   "main": "dist/avs.min.js",
   "files:": [
     "dist",
@@ -10,19 +16,19 @@
   ],
   "scripts": {
     "build:code": "rollup -c",
-    "build:style": "postcss src/avs.css -o dist/avs.min.css",
+    "build:style": "postcss src/theme.css -o dist/theme.min.css",
     "build": "npm-run-all --parallel build:*",
     "dev": "npm run watch",
     "fix:code": "eslint ./src/avs.js --fix --ignore-path .gitignore",
-    "fix:style": "stylelint ./src/avs.css --fix",
+    "fix:style": "stylelint ./src/theme.css --fix",
     "fix": "npm-run-all --parallel fix:*",
     "lint:code": "eslint ./src/avs.js --ignore-path .gitignore",
-    "lint:style": "stylelint ./src/avs.css",
+    "lint:style": "stylelint ./src/theme.css",
     "lint": "npm-run-all --parallel lint:*",
     "prepare": "husky install",
     "start": "npm run watch",
     "watch:code": "rollup -w -c",
-    "watch:style": "postcss -w src/avs.css -o dist/avs.min.css",
+    "watch:style": "postcss -w src/theme.css -o dist/theme.min.css",
     "watch": "npm-run-all --parallel watch:*"
   },
   "repository": {
@@ -35,12 +41,6 @@
     "codemirror",
     "syntax highlighter"
   ],
-  "author": "Jan T. Sott",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/visbot/codemirror-avs/issues"
-  },
-  "homepage": "https://visbot.github.io/codemirror-avs/",
   "dependencies": {
     "codemirror": ">=5.63 <6"
   },
