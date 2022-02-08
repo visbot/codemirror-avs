@@ -5,14 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="Winamp AVS mode for CodeMirror 5" />
     <title>Demo | @visbot/codemirror-avs</title>
-    <style>/*! tailwindcss v2.1.1 | MIT License | https://tailwindcss.com *//*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */*,::after,::before{box-sizing:border-box}:root{-moz-tab-size:4;tab-size:4}html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"}textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}h1,p{margin:0}html{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";line-height:1.5}body{font-family:inherit;line-height:inherit}*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}textarea{resize:vertical}h1{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}textarea{padding:0;line-height:inherit;color:inherit}.container{width:100%}@media(min-width:640px){.container{max-width:640px}}@media(min-width:768px){.container{max-width:768px}}@media(min-width:1024px){.container{max-width:1024px}}@media(min-width:1280px){.container{max-width:1280px}}@media(min-width:1536px){.container{max-width:1536px}}.block{display:block}.flex{display:flex}.flex-col{flex-direction:column}.justify-center{justify-content:center}.font-sans{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"}.h-screen{height:100vh}.text-base{font-size:1rem;line-height:1.5rem}.text-2xl{font-size:1.5rem;line-height:2rem}.mx-5{margin-left:1.25rem;margin-right:1.25rem}.mx-auto{margin-left:auto;margin-right:auto}.mt-3{margin-top:.75rem}.mt-8{margin-top:2rem}.p-4{padding:1rem}*{--tw-shadow:0 0 #0000}*{--tw-ring-inset:var(--tw-empty);/*!*//*!*/--tw-ring-offset-width:0;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000}.text-center{text-align:center}.text-gray-500{--tw-text-opacity:1;color:rgba(107,114,128,var(--tw-text-opacity))}.text-gray-900{--tw-text-opacity:1;color:rgba(17,24,39,var(--tw-text-opacity))}.text-indigo-600{--tw-text-opacity:1;color:rgba(79,70,229,var(--tw-text-opacity))}.tracking-tight{letter-spacing:-0.025em}.w-full{width:100%}@media(min-width:640px){.sm\:text-lg{font-size:1.125rem;line-height:1.75rem}.sm\:mx-auto{margin-left:auto;margin-right:auto}.sm\:mt-5{margin-top:1.25rem}}@media(min-width:768px){.md\:text-xl{font-size:1.25rem;line-height:1.75rem}.md\:mx-0{margin-left:0;margin-right:0}.md\:mt-5{margin-top:1.25rem}}@media(min-width:1024px){.lg\:flex-shrink-0{flex-shrink:0}.lg\:mx-0{margin-left:0;margin-right:0}.lg\:mt-5{margin-top:1.25rem}.lg\:w-2\/3{width:66.666667%}}@media(min-width:1280px){.xl\:inline{display:inline}}</style>
+    <style>/*! tailwindcss v2.1.1 | MIT License | https://tailwindcss.com *//*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */*,::after,::before{box-sizing:border-box}:root{-moz-tab-size:4;tab-size:4}html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"}textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}h1,p{margin:0}html{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";line-height:1.5}body{font-family:inherit;line-height:inherit}*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}textarea{resize:vertical}h1{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}textarea{padding:0;line-height:inherit;color:inherit}.container{width:100%}@media(min-width:640px){.container{max-width:640px}}@media(min-width:768px){.container{max-width:768px}}@media(min-width:1024px){.container{max-width:1024px}}@media(min-width:1280px){.container{max-width:1280px}}@media(min-width:1536px){.container{max-width:1536px}}.block{display:block}.flex{display:flex}.flex-col{flex-direction:column}.justify-center{justify-content:center}.font-sans{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"}.h-screen{height:100vh}.font-semibold{font-weight:600}.text-base{font-size:1rem;line-height:1.5rem}.text-2xl{font-size:1.5rem;line-height:2rem}.mx-5{margin-left:1.25rem;margin-right:1.25rem}.mx-auto{margin-left:auto;margin-right:auto}.mt-3{margin-top:.75rem}.mt-8{margin-top:2rem}.p-4{padding:1rem}*{--tw-shadow:0 0 #0000}*{--tw-ring-inset:var(--tw-empty);/*!*//*!*/--tw-ring-offset-width:0;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000}.text-center{text-align:center}.text-gray-500{--tw-text-opacity:1;color:rgba(107,114,128,var(--tw-text-opacity))}.text-gray-900{--tw-text-opacity:1;color:rgba(17,24,39,var(--tw-text-opacity))}.text-indigo-600{--tw-text-opacity:1;color:rgba(79,70,229,var(--tw-text-opacity))}.tracking-tight{letter-spacing:-0.025em}.w-full{width:100%}@media(min-width:640px){.sm\:text-lg{font-size:1.125rem;line-height:1.75rem}.sm\:mx-auto{margin-left:auto;margin-right:auto}.sm\:mt-5{margin-top:1.25rem}}@media(min-width:768px){.md\:text-xl{font-size:1.25rem;line-height:1.75rem}.md\:mx-0{margin-left:0;margin-right:0}.md\:mt-5{margin-top:1.25rem}}@media(min-width:1024px){.lg\:flex-shrink-0{flex-shrink:0}.lg\:mx-0{margin-left:0;margin-right:0}.lg\:mt-5{margin-top:1.25rem}.lg\:w-2\/3{width:66.666667%}}@media(min-width:1280px){.xl\:inline{display:inline}}</style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5/lib/codemirror.min.css" />
     <link rel="stylesheet" href="dist/theme.min.css" />
-    <style>
-      label {
-        font-weight: bold;
-      }
-    </style>
   </head>
   <body class="flex flex-col bg-grey-lighter dark:bg-gray-800 h-screen p-4 font-sans">
     <main class="container mx-auto flex justify-center">
@@ -28,7 +23,7 @@
 
         <div class="mt-8 lex lg:mt-5 lg:flex-shrink-0">
           <p class="mt-3">
-            <label for="frame">Frame</label>
+            <label class="font-semibold" for="frame">Frame</label>
             <textarea id="frame" class="codemirror">
 nn=if(below(w,500),4,if(below(w,1000),6,8));
 n=ceil((w/nn))*2+4;
@@ -135,7 +130,7 @@ sin(megabuf(p+23000))*cos(megabuf(p+23000)*.7))));</textarea
           </p>
 
           <p class="mt-3">
-            <label for="beat">Beat</label>
+            <label class="font-semibold" for="beat">Beat</label>
             <textarea id="beat" class="codemirror">
 uu=equal(ymt,dest)*floor(rand(18)/17);
 rb=rand(5)-3;
@@ -153,7 +148,7 @@ assign(megabuf(p+22000),(rand(20)-10)*.01)));</textarea
           </p>
 
           <p class="mt-3">
-            <label for="point">Point</label>
+            <label class="font-semibold" for="point">Point</label>
             <textarea id="point" class="codemirror">
 k=-k;
 x=(i*2-1+m*-k)*(1+m*3);
